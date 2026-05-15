@@ -1,0 +1,2728 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#0A0F1E">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="description" content="PRECYÁ PRO - Encontra os melhores preços em Moçambique. Compare preços de mercados, supermercados e lojas perto de ti.">
+<meta name="keywords" content="preços, moçambique, mercados, comparador, maputo, matola">
+<meta name="author" content="PRECYÁ PRO">
+<link rel="manifest" href="data:application/json;base64,eyJuYW1lIjoiUFJFQ1kgU1RST05HIFBSTyIsInNob3J0X25hbWUiOiJQUkVDWSIsInN0YXJ0X3VybCI6Ii4iLCJkaXNwbGF5Ijoic3RhbmRhbG9uZSIsImJhY2tncm91bmRfY29sb3IiOiIjMEEwRjFFIiwidGhlbWVfY29sb3IiOiIjMDBDODUzIiwiaWNvbnMiOlt7InNyYyI6Imh0dHBzOi8vY2RuLmpzZGVsaXZyLm5ldC9naC9tb29uc2hvdC1haS9tb29uc2hvdC1haUByZWZzL2hlYWRzL21haW4vYXBwL2Zhdmljb24ucG5nIiwic2l6ZXMiOiIxOTJ4MTkyIiwidHlwZSI6ImltYWdlL3BuZyJ9XX0=">
+<meta name="mobile-web-app-capable" content="yes">
+<title>PRECYÁ PRO — Preços Reais de Moçambique</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+:root{
+  --p:#00C853;--pd:#009624;--pl:#E8F5E9;--p2:#00E676;
+  --sec:#FF6D00;--acc:#2979FF;--danger:#FF1744;--warn:#FFC400;--purple:#7C3AED;
+  --dark:#0A0F1E;--dark2:#111827;--dark3:#1F2937;
+  --gray:#6B7280;--gray2:#9CA3AF;--grayL:#F1F5F9;--grayM:#E5E7EB;
+  --white:#FFFFFF;
+  --sh:0 2px 12px rgba(0,0,0,0.08);--shL:0 8px 32px rgba(0,0,0,0.12);--shXL:0 20px 60px rgba(0,0,0,0.18);
+  --r:16px;--rs:12px;--rx:20px;
+  --tr:all 0.25s cubic-bezier(0.4,0,0.2,1);
+  --header-h:108px;
+}
+[data-theme="dark"]{
+  --dark:#F0F4F8;--dark2:#E5E7EB;--dark3:#D1D5DB;
+  --grayL:#1F2937;--grayM:#374151;
+  --white:#0A0F1E;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html,body{height:100%;overscroll-behavior:none;}
+body{font-family:'Poppins',sans-serif;background:#F0F4F8;color:var(--dark);overflow:hidden;transition:background 0.3s ease;}
+body.dark-mode{background:#0A0F1E;color:#F0F4F8;}
+
+/* ===== SPLASH ===== */
+#splash{position:fixed;inset:0;background:linear-gradient(160deg,var(--dark) 0%,#0d2137 50%,#001a0a 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:9999;transition:opacity 0.7s ease,transform 0.7s ease;}
+#splash.out{opacity:0;transform:scale(1.06);pointer-events:none;}
+.spl-bg{position:absolute;inset:0;overflow:hidden;}
+.spl-blob{position:absolute;border-radius:50%;filter:blur(80px);opacity:0.15;}
+.spl-blob1{width:400px;height:400px;background:var(--p);top:-100px;right:-100px;animation:blobMove 8s ease-in-out infinite;}
+.spl-blob2{width:300px;height:300px;background:var(--acc);bottom:-50px;left:-80px;animation:blobMove 10s ease-in-out infinite reverse;}
+@keyframes blobMove{0%,100%{transform:translate(0,0) scale(1);}50%{transform:translate(30px,-20px) scale(1.1);}}
+.spl-logo{position:relative;width:110px;height:110px;background:linear-gradient(135deg,var(--p),var(--pd));border-radius:28px;display:flex;align-items:center;justify-content:center;box-shadow:0 0 60px rgba(0,200,83,0.5),0 0 120px rgba(0,200,83,0.2);animation:logoPulse 2.5s ease-in-out infinite;}
+.spl-logo i{font-size:50px;color:white;}
+@keyframes logoPulse{0%,100%{box-shadow:0 0 60px rgba(0,200,83,0.5),0 0 120px rgba(0,200,83,0.2);}50%{box-shadow:0 0 80px rgba(0,200,83,0.7),0 0 160px rgba(0,200,83,0.3);}}
+.spl-title{margin-top:28px;font-size:42px;font-weight:900;color:white;letter-spacing:3px;}
+.spl-title span{color:var(--p);text-shadow:0 0 20px rgba(0,200,83,0.5);}
+.spl-sub{margin-top:8px;font-size:13px;color:rgba(255,255,255,0.5);font-weight:300;letter-spacing:1px;}
+.spl-badge{margin-top:10px;background:linear-gradient(135deg,var(--p),var(--acc));padding:4px 16px;border-radius:20px;font-size:11px;font-weight:700;color:white;letter-spacing:1px;text-transform:uppercase;}
+.spl-loader{margin-top:50px;width:220px;height:3px;background:rgba(255,255,255,0.08);border-radius:2px;overflow:hidden;}
+.spl-bar{height:100%;width:0%;background:linear-gradient(90deg,var(--p),var(--acc),var(--p));background-size:200%;animation:loadBar 2.8s ease forwards,shimmer 1.5s linear infinite;}
+@keyframes loadBar{0%{width:0%;}100%{width:100%;}}
+@keyframes shimmer{0%{background-position:0%;}100%{background-position:200%;}}
+.spl-tagline{margin-top:16px;font-size:12px;color:rgba(255,255,255,0.35);}
+
+/* ===== ONBOARDING ===== */
+#onboarding{position:fixed;inset:0;background:var(--white);z-index:800;display:none;flex-direction:column;overflow:hidden;}
+#onboarding.active{display:flex;}
+.onb-slides{flex:1;position:relative;overflow:hidden;}
+.onb-slide{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 32px;opacity:0;transform:translateX(60px);transition:all 0.4s cubic-bezier(0.4,0,0.2,1);pointer-events:none;}
+.onb-slide.active{opacity:1;transform:translateX(0);pointer-events:all;}
+.onb-slide.out{opacity:0;transform:translateX(-60px);}
+.onb-img{width:200px;height:200px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:36px;font-size:80px;position:relative;}
+.onb-img1{background:linear-gradient(135deg,#E8F5E9,#C8E6C9);}
+.onb-img2{background:linear-gradient(135deg,#E3F2FD,#BBDEFB);}
+.onb-img3{background:linear-gradient(135deg,#FFF3E0,#FFE0B2);}
+.onb-img4{background:linear-gradient(135deg,#F3E5F5,#E1BEE7);}
+.onb-img5{background:linear-gradient(135deg,#FCE4EC,#F8BBD9);}
+.onb-badge{position:absolute;bottom:10px;right:10px;background:var(--p);color:white;width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;box-shadow:0 4px 12px rgba(0,200,83,0.4);}
+.onb-title{font-size:26px;font-weight:800;color:var(--dark);text-align:center;margin-bottom:14px;line-height:1.2;}
+.onb-title span{color:var(--p);}
+.onb-desc{font-size:14px;color:var(--gray);text-align:center;line-height:1.7;max-width:320px;}
+.onb-desc strong{color:var(--dark);}
+.onb-bottom{padding:24px 28px 40px;flex-shrink:0;}
+.onb-dots{display:flex;justify-content:center;gap:8px;margin-bottom:24px;}
+.onb-dot{width:8px;height:8px;border-radius:4px;background:var(--grayM);transition:var(--tr);}
+.onb-dot.active{width:28px;background:var(--p);}
+.onb-btns{display:flex;gap:12px;}
+.onb-btn-skip{flex:1;padding:14px;border-radius:var(--r);border:2px solid var(--grayM);background:transparent;font-family:'Poppins',sans-serif;font-size:14px;font-weight:600;color:var(--gray);cursor:pointer;transition:var(--tr);}
+.onb-btn-skip:hover{border-color:var(--p);color:var(--p);}
+.onb-btn-next{flex:2;padding:14px;border-radius:var(--r);border:none;background:linear-gradient(135deg,var(--p),var(--pd));color:white;font-family:'Poppins',sans-serif;font-size:14px;font-weight:700;cursor:pointer;transition:var(--tr);display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 4px 20px rgba(0,200,83,0.35);}
+.onb-btn-next:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,200,83,0.45);}
+.onb-partner-section{background:linear-gradient(135deg,var(--dark),var(--dark2));border-radius:var(--r);padding:20px;margin-bottom:20px;}
+.onb-partner-title{font-size:16px;font-weight:700;color:white;margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+.onb-partner-title i{color:var(--p);}
+.onb-partner-steps{display:flex;flex-direction:column;gap:10px;}
+.onb-step{display:flex;align-items:flex-start;gap:12px;}
+.onb-step-num{width:28px;height:28px;border-radius:50%;background:var(--p);color:white;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.onb-step-text{font-size:12px;color:rgba(255,255,255,0.75);line-height:1.5;padding-top:4px;}
+.onb-features{display:grid;grid-template-columns:1fr 1fr;gap:10px;width:100%;}
+.onb-feat{background:var(--grayL);border-radius:var(--rs);padding:14px;text-align:center;}
+.onb-feat i{font-size:24px;color:var(--p);margin-bottom:6px;display:block;}
+.onb-feat span{font-size:11px;font-weight:600;color:var(--dark);}
+
+/* ===== APP SHELL ===== */
+#app{position:fixed;inset:0;max-width:480px;margin:0 auto;display:flex;flex-direction:column;overflow:hidden;}
+
+/* ===== HEADER COMPACTO ===== */
+.hdr{background:linear-gradient(160deg,var(--dark) 0%,var(--dark2) 100%);padding:12px 16px 14px;flex-shrink:0;position:relative;z-index:100;}
+.hdr::after{content:'';position:absolute;bottom:-1px;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(0,200,83,0.3),transparent);}
+.hdr-row1{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
+.logo-wrap{display:flex;align-items:center;gap:9px;cursor:pointer;}
+.logo-ico{width:34px;height:34px;background:linear-gradient(135deg,var(--p),var(--pd));border-radius:9px;display:flex;align-items:center;justify-content:center;box-shadow:0 3px 10px rgba(0,200,83,0.35);}
+.logo-ico i{color:white;font-size:17px;}
+.logo-txt{font-size:20px;font-weight:900;color:white;letter-spacing:1px;}
+.logo-txt span{color:var(--p);}
+.logo-pro{font-size:9px;font-weight:700;background:linear-gradient(135deg,var(--warn),#FF8F00);color:white;padding:1px 6px;border-radius:4px;margin-left:4px;vertical-align:middle;letter-spacing:0.5px;}
+.hdr-right{display:flex;align-items:center;gap:8px;}
+.hdr-btn{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,0.1);border:none;color:rgba(255,255,255,0.8);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:var(--tr);font-size:15px;position:relative;}
+.hdr-btn:hover{background:rgba(255,255,255,0.2);color:white;}
+.hdr-notif-dot{position:absolute;top:4px;right:4px;width:8px;height:8px;background:var(--danger);border-radius:50%;border:2px solid var(--dark);}
+.hdr-row2{display:flex;gap:10px;align-items:center;}
+.loc-pill{display:flex;align-items:center;gap:5px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:5px 11px;cursor:pointer;transition:var(--tr);flex-shrink:0;}
+.loc-pill:hover{background:rgba(255,255,255,0.15);}
+.loc-pill i{color:var(--p);font-size:11px;}
+.loc-pill span{color:white;font-size:11px;font-weight:600;}
+.loc-pill .loc-dot{width:6px;height:6px;background:var(--p);border-radius:50%;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.3;}}
+.search-wrap{position:relative;flex:1;}
+.search-inp{width:100%;background:rgba(255,255,255,0.12);border:1.5px solid rgba(255,255,255,0.1);border-radius:22px;padding:9px 42px 9px 38px;color:white;font-size:13px;font-family:'Poppins',sans-serif;outline:none;transition:var(--tr);}
+.search-inp::placeholder{color:rgba(255,255,255,0.4);}
+.search-inp:focus{background:rgba(255,255,255,0.18);border-color:var(--p);}
+.search-ico{position:absolute;left:13px;top:50%;transform:translateY(-50%);color:rgba(255,255,255,0.45);font-size:14px;pointer-events:none;}
+.search-mic{position:absolute;right:8px;top:50%;transform:translateY(-50%);width:28px;height:28px;background:var(--p);border:none;border-radius:50%;color:white;font-size:12px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:var(--tr);}
+.search-mic:hover{background:var(--pd);}
+.search-mic.listening{animation:micRipple 1s infinite;}
+@keyframes micRipple{0%,100%{box-shadow:0 0 0 0 rgba(0,200,83,0.5);}50%{box-shadow:0 0 0 10px rgba(0,200,83,0);}}
+
+/* SUGGESTIONS */
+.search-drop{position:absolute;top:calc(100% + 8px);left:0;right:0;background:var(--white);border-radius:var(--rs);box-shadow:var(--shXL);z-index:500;overflow:hidden;display:none;}
+.search-drop.open{display:block;animation:dropIn 0.15s ease;}
+@keyframes dropIn{from{opacity:0;transform:translateY(-6px);}to{opacity:1;transform:translateY(0);}}
+.sug-item{display:flex;align-items:center;gap:10px;padding:11px 14px;cursor:pointer;border-bottom:1px solid var(--grayL);transition:var(--tr);}
+.sug-item:last-child{border:none;}
+.sug-item:hover{background:var(--pl);}
+.sug-item i{color:var(--gray2);font-size:13px;width:16px;text-align:center;}
+.sug-item span{font-size:13px;color:var(--dark);}
+
+/* STATUS PILL */
+.status-pill{display:flex;align-items:center;gap:6px;padding:5px 12px;border-radius:20px;font-size:11px;font-weight:600;margin-top:8px;}
+.status-pill.premium{background:rgba(0,200,83,0.15);border:1px solid rgba(0,200,83,0.25);color:var(--p);}
+.status-pill.trial{background:rgba(255,109,0,0.15);border:1px solid rgba(255,109,0,0.25);color:var(--sec);}
+.status-pill.locked{background:rgba(255,23,68,0.12);border:1px solid rgba(255,23,68,0.2);color:var(--danger);}
+.status-pill i{font-size:12px;}
+
+/* ===== MAIN SCROLL ===== */
+.main-scroll{flex:1;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:80px;}
+.main-scroll::-webkit-scrollbar{display:none;}
+
+/* ===== BOTTOM NAV ===== */
+.bnav{position:absolute;bottom:0;left:0;right:0;background:rgba(255,255,255,0.97);backdrop-filter:blur(20px);border-top:1px solid var(--grayM);display:flex;justify-content:space-around;padding:8px 4px 14px;z-index:100;box-shadow:0 -4px 24px rgba(0,0,0,0.07);}
+.nv{display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer;padding:6px 12px;border-radius:var(--rs);transition:var(--tr);position:relative;min-width:54px;}
+.nv:hover{background:var(--grayL);}
+.nv-ico{width:38px;height:38px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:18px;color:var(--gray2);transition:var(--tr);}
+.nv.active .nv-ico{background:var(--pl);color:var(--p);}
+.nv-lbl{font-size:10px;font-weight:600;color:var(--gray2);}
+.nv.active .nv-lbl{color:var(--p);}
+.nv-badge{position:absolute;top:4px;right:8px;min-width:16px;height:16px;background:var(--danger);border-radius:8px;font-size:9px;color:white;display:flex;align-items:center;justify-content:center;font-weight:700;padding:0 3px;}
+
+/* ===== PAGE SYSTEM ===== */
+.page{display:none;animation:pageIn 0.22s ease;}
+.page.active{display:block;}
+@keyframes pageIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
+
+/* ===== HOME PAGE ===== */
+.home-page{padding:0 0 8px;}
+
+/* CATEGORY CHIPS */
+.cat-strip{display:flex;gap:8px;padding:12px 16px 4px;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;}
+.cat-strip::-webkit-scrollbar{display:none;}
+.cat-chip{display:flex;align-items:center;gap:6px;padding:7px 14px;border-radius:20px;background:var(--white);border:1.5px solid var(--grayM);font-size:12px;font-weight:600;color:var(--gray);cursor:pointer;transition:var(--tr);white-space:nowrap;box-shadow:var(--sh);flex-shrink:0;}
+.cat-chip:hover{border-color:var(--p);color:var(--p);}
+.cat-chip.active{background:var(--p);border-color:var(--p);color:white;box-shadow:0 4px 12px rgba(0,200,83,0.3);}
+.cat-chip i{font-size:13px;}
+
+/* FEATURED BANNER */
+.banner-area{padding:10px 16px 0;}
+.banner{border-radius:var(--r);overflow:hidden;position:relative;height:150px;cursor:pointer;background:linear-gradient(135deg,var(--dark),var(--dark2));box-shadow:var(--shL);}
+.banner-bg{position:absolute;inset:0;background:linear-gradient(135deg,#003d1f 0%,#001a0a 60%,#002a4a 100%);}
+.banner-blob{position:absolute;width:200px;height:200px;background:rgba(0,200,83,0.15);border-radius:50%;filter:blur(40px);top:-40px;right:-40px;}
+.banner-content{position:relative;padding:20px;height:100%;display:flex;flex-direction:column;justify-content:space-between;}
+.banner-tag{background:var(--p);color:white;font-size:10px;font-weight:700;padding:3px 10px;border-radius:20px;display:inline-block;width:fit-content;text-transform:uppercase;letter-spacing:0.5px;}
+.banner-title{font-size:20px;font-weight:800;color:white;line-height:1.2;}
+.banner-title span{color:var(--p);}
+.banner-sub{font-size:11px;color:rgba(255,255,255,0.6);}
+.banner-cta{background:white;color:var(--dark);font-size:11px;font-weight:700;padding:7px 16px;border-radius:20px;display:inline-flex;align-items:center;gap:5px;cursor:pointer;transition:var(--tr);}
+.banner-cta:hover{background:var(--p);color:white;}
+.banner-emoji{position:absolute;right:16px;top:50%;transform:translateY(-50%);font-size:64px;opacity:0.3;}
+
+/* SECTION HEADER */
+.sec-hdr{display:flex;align-items:center;justify-content:space-between;padding:16px 16px 10px;}
+.sec-hdr-left{display:flex;align-items:center;gap:7px;}
+.sec-hdr-left h2{font-size:16px;font-weight:700;color:var(--dark);}
+.sec-hdr-left i{color:var(--p);font-size:15px;}
+.sec-see-all{font-size:12px;color:var(--p);font-weight:600;cursor:pointer;display:flex;align-items:center;gap:3px;}
+
+/* PRODUCT GRID */
+.prod-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0 12px;}
+.prod-card{background:var(--white);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh);border:1px solid var(--grayM);cursor:pointer;transition:var(--tr);position:relative;}
+.prod-card:hover{transform:translateY(-3px);box-shadow:var(--shL);}
+.prod-card:active{transform:scale(0.97);}
+.prod-img-wrap{position:relative;width:100%;aspect-ratio:1/1;overflow:hidden;background:var(--grayL);}
+.prod-img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s ease;}
+.prod-card:hover .prod-img{transform:scale(1.05);}
+.prod-img-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:48px;}
+.prod-img-placeholder.food{background:linear-gradient(135deg,#E8F5E9,#C8E6C9);}
+.prod-img-placeholder.drink{background:linear-gradient(135deg,#FFF3E0,#FFE0B2);}
+.prod-img-placeholder.hygiene{background:linear-gradient(135deg,#E3F2FD,#BBDEFB);}
+.prod-img-placeholder.service{background:linear-gradient(135deg,#FFF8E1,#FFF176);}
+.prod-img-placeholder.clean{background:linear-gradient(135deg,#FCE4EC,#F8BBD9);}
+.prod-disc-badge{position:absolute;top:8px;left:8px;background:var(--danger);color:white;font-size:10px;font-weight:800;padding:3px 8px;border-radius:20px;box-shadow:0 2px 8px rgba(255,23,68,0.4);}
+.prod-hot-badge{position:absolute;top:8px;right:8px;background:var(--sec);color:white;font-size:10px;font-weight:700;padding:3px 8px;border-radius:20px;}
+.prod-fav{position:absolute;bottom:8px;right:8px;width:28px;height:28px;background:rgba(255,255,255,0.9);border-radius:50%;display:flex;align-items:center;justify-content:center;border:none;cursor:pointer;font-size:13px;color:var(--gray2);transition:var(--tr);box-shadow:var(--sh);}
+.prod-fav.active{color:var(--danger);}
+.prod-body{padding:10px;}
+.prod-name{font-size:13px;font-weight:700;color:var(--dark);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:3px;}
+.prod-loc{font-size:10px;color:var(--gray2);display:flex;align-items:center;gap:3px;margin-bottom:6px;}
+.prod-loc i{font-size:9px;}
+.prod-price-row{display:flex;align-items:baseline;gap:5px;flex-wrap:wrap;}
+.prod-price-low{font-size:16px;font-weight:800;color:var(--p);}
+.prod-price-high{font-size:11px;color:var(--gray2);text-decoration:line-through;}
+.prod-action{display:flex;align-items:center;justify-content:space-between;margin-top:8px;}
+.prod-tag{font-size:9px;font-weight:700;padding:2px 7px;border-radius:10px;text-transform:uppercase;letter-spacing:0.3px;}
+.prod-tag.compra{background:#E8F5E9;color:var(--p);}
+.prod-tag.vende{background:#E3F2FD;color:var(--acc);}
+.prod-tag.servico{background:#FFF8E1;color:#F57C00;}
+.prod-rating{display:flex;align-items:center;gap:2px;font-size:10px;color:var(--warn);}
+.prod-rating span{color:var(--gray2);font-size:10px;margin-left:2px;}
+
+/* HORIZONTAL SCROLL CARDS */
+.hscroll{display:flex;gap:12px;padding:0 16px 8px;overflow-x:auto;scrollbar-width:none;}
+.hscroll::-webkit-scrollbar{display:none;}
+.deal-card{min-width:200px;background:var(--white);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh);border:1px solid var(--grayM);cursor:pointer;transition:var(--tr);flex-shrink:0;}
+.deal-card:hover{transform:translateY(-3px);box-shadow:var(--shL);}
+.deal-img{height:120px;position:relative;overflow:hidden;}
+.deal-img img{width:100%;height:100%;object-fit:cover;}
+.deal-img-ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:44px;}
+.deal-badge{position:absolute;top:8px;left:8px;background:var(--danger);color:white;padding:2px 8px;border-radius:20px;font-size:10px;font-weight:700;}
+.deal-body{padding:10px 12px;}
+.deal-name{font-size:13px;font-weight:700;color:var(--dark);margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.deal-loc{font-size:10px;color:var(--gray2);margin-bottom:6px;display:flex;align-items:center;gap:3px;}
+.deal-prices{display:flex;align-items:baseline;gap:6px;}
+.deal-low{font-size:17px;font-weight:800;color:var(--p);}
+.deal-high{font-size:11px;color:var(--gray2);text-decoration:line-through;}
+
+/* STATS STRIP */
+.stats-strip{display:flex;gap:10px;padding:12px 16px;overflow-x:auto;scrollbar-width:none;}
+.stats-strip::-webkit-scrollbar{display:none;}
+.stat-card{min-width:120px;background:var(--white);border-radius:var(--rs);padding:14px;text-align:center;box-shadow:var(--sh);border:1px solid var(--grayM);flex-shrink:0;}
+.stat-val{font-size:22px;font-weight:800;color:var(--p);}
+.stat-lbl{font-size:10px;color:var(--gray2);font-weight:500;margin-top:2px;}
+.stat-icon{font-size:20px;margin-bottom:4px;}
+
+/* ===== SEARCH PAGE ===== */
+.search-page{padding:16px;}
+.search-page-inp-wrap{position:relative;margin-bottom:16px;}
+.search-page-inp{width:100%;padding:14px 16px 14px 44px;border:2px solid var(--grayM);border-radius:var(--r);font-family:'Poppins',sans-serif;font-size:14px;outline:none;transition:var(--tr);background:var(--white);}
+.search-page-inp:focus{border-color:var(--p);}
+.search-page-ico{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--gray2);font-size:16px;}
+.filter-row{display:flex;gap:8px;margin-bottom:16px;overflow-x:auto;scrollbar-width:none;}
+.filter-row::-webkit-scrollbar{display:none;}
+.filter-btn{display:flex;align-items:center;gap:5px;padding:7px 14px;border-radius:20px;border:1.5px solid var(--grayM);background:var(--white);font-family:'Poppins',sans-serif;font-size:12px;font-weight:600;color:var(--gray);cursor:pointer;transition:var(--tr);white-space:nowrap;}
+.filter-btn.active{background:var(--p);border-color:var(--p);color:white;}
+.search-results-list{display:none;}
+.search-results-list.active{display:block;}
+.result-card{background:var(--white);border-radius:var(--r);padding:16px;margin-bottom:12px;box-shadow:var(--sh);border:1px solid var(--grayM);cursor:pointer;transition:var(--tr);}
+.result-card:hover{border-color:var(--p);transform:translateX(3px);}
+.result-hdr{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px;}
+.result-name{font-size:15px;font-weight:700;color:var(--dark);}
+.result-cat-tag{font-size:10px;background:var(--grayL);color:var(--gray);padding:3px 9px;border-radius:10px;text-transform:uppercase;letter-spacing:0.4px;}
+.store-row{display:flex;align-items:center;justify-content:space-between;padding:9px 12px;background:var(--grayL);border-radius:10px;margin-bottom:6px;transition:var(--tr);}
+.store-row:hover{background:var(--grayM);}
+.store-left{display:flex;align-items:center;gap:10px;}
+.store-ico{width:32px;height:32px;border-radius:8px;background:white;display:flex;align-items:center;justify-content:center;font-size:15px;}
+.store-info .store-name{font-size:12px;font-weight:600;color:var(--dark);}
+.store-info .store-loc{font-size:10px;color:var(--gray2);display:flex;align-items:center;gap:3px;}
+.store-price{font-size:15px;font-weight:800;color:var(--p);}
+.store-price.high{color:var(--danger);}
+.store-price.mid{color:var(--warn);}
+.result-best{margin-top:10px;padding:10px 12px;background:linear-gradient(135deg,var(--pl),#C8E6C9);border-radius:10px;border-left:3px solid var(--p);}
+.result-best-lbl{font-size:10px;font-weight:700;color:var(--p);margin-bottom:2px;}
+.result-best-txt{font-size:12px;color:var(--dark);line-height:1.5;}
+
+/* ===== PRODUCT DETAIL ===== */
+.prod-detail-page{padding:0;}
+.pd-back{display:flex;align-items:center;gap:8px;padding:14px 16px 10px;color:var(--p);font-size:14px;font-weight:600;cursor:pointer;}
+.pd-image-hero{width:100%;height:220px;position:relative;overflow:hidden;background:var(--grayL);}
+.pd-image-hero img{width:100%;height:100%;object-fit:cover;}
+.pd-image-hero-ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:80px;}
+.pd-content{padding:16px;}
+.pd-header-info{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px;}
+.pd-title{font-size:20px;font-weight:800;color:var(--dark);}
+.pd-cat-tag{font-size:10px;background:var(--pl);color:var(--p);padding:4px 12px;border-radius:20px;font-weight:700;}
+.pd-loc-info{display:flex;align-items:center;gap:5px;font-size:12px;color:var(--gray2);margin-bottom:8px;}
+.pd-desc{font-size:13px;color:var(--gray);line-height:1.7;margin-bottom:16px;background:var(--grayL);padding:12px;border-radius:var(--rs);}
+.pd-prices-box{background:var(--white);border-radius:var(--r);border:1px solid var(--grayM);overflow:hidden;margin-bottom:16px;box-shadow:var(--sh);}
+.pd-prices-box table{width:100%;border-collapse:collapse;}
+.pd-prices-box th{background:var(--grayL);padding:10px 12px;font-size:10px;font-weight:700;color:var(--gray);text-transform:uppercase;letter-spacing:0.4px;text-align:left;}
+.pd-prices-box td{padding:11px 12px;font-size:12px;border-bottom:1px solid var(--grayL);}
+.pd-prices-box tr:last-child td{border:none;}
+.pd-btn-row{display:flex;gap:10px;}
+.pd-btn{flex:1;padding:14px;border-radius:var(--r);border:none;font-family:'Poppins',sans-serif;font-size:14px;font-weight:700;cursor:pointer;transition:var(--tr);display:flex;align-items:center;justify-content:center;gap:7px;}
+.pd-btn-primary{background:linear-gradient(135deg,var(--p),var(--pd));color:white;box-shadow:0 4px 16px rgba(0,200,83,0.3);}
+.pd-btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,200,83,0.4);}
+.pd-btn-outline{background:transparent;border:2px solid var(--p)!important;color:var(--p);}
+
+/* ===== ALERTS PAGE ===== */
+.alerts-page{padding:16px;}
+.alert-card{background:var(--white);border-radius:var(--r);padding:14px 16px;margin-bottom:10px;box-shadow:var(--sh);border:1px solid var(--grayM);display:flex;align-items:center;gap:12px;cursor:pointer;transition:var(--tr);}
+.alert-card:hover{border-color:var(--p);transform:translateX(3px);}
+.alert-ico{width:44px;height:44px;border-radius:12px;background:var(--pl);display:flex;align-items:center;justify-content:center;color:var(--p);font-size:20px;flex-shrink:0;}
+.alert-ico.up{background:#FFEBEE;color:var(--danger);}
+.alert-body{flex:1;min-width:0;}
+.alert-prod{font-size:13px;font-weight:600;color:var(--dark);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.alert-meta{font-size:11px;color:var(--gray2);margin-top:2px;}
+.alert-right{text-align:right;}
+.alert-price{font-size:16px;font-weight:800;color:var(--p);}
+.alert-chg{font-size:11px;font-weight:600;}
+.alert-chg.down{color:var(--p);}
+.alert-chg.up{color:var(--danger);}
+.alert-form-box{background:var(--white);border-radius:var(--r);padding:16px;box-shadow:var(--sh);margin-bottom:16px;}
+.alert-form-box h3{font-size:15px;font-weight:700;color:var(--dark);margin-bottom:14px;display:flex;align-items:center;gap:7px;}
+.alert-form-box h3 i{color:var(--p);}
+.form-grp{margin-bottom:13px;}
+.form-lbl{display:block;font-size:11px;font-weight:700;color:var(--dark);margin-bottom:6px;text-transform:uppercase;letter-spacing:0.4px;}
+.form-inp,.form-sel{width:100%;padding:12px 14px;border:2px solid var(--grayM);border-radius:var(--rs);font-family:'Poppins',sans-serif;font-size:13px;outline:none;transition:var(--tr);background:var(--white);color:var(--dark);}
+.form-inp:focus,.form-sel:focus{border-color:var(--p);}
+.form-inp::placeholder{color:var(--gray2);}
+
+/* ===== PROFILE PAGE ===== */
+.profile-page{padding:16px;}
+.prof-hero{background:linear-gradient(135deg,var(--dark),var(--dark2));border-radius:var(--r);padding:24px 20px;text-align:center;margin-bottom:16px;position:relative;overflow:hidden;}
+.prof-hero::before{content:'';position:absolute;top:-40px;right:-40px;width:180px;height:180px;background:rgba(0,200,83,0.1);border-radius:50%;filter:blur(40px);}
+.prof-avatar{width:76px;height:76px;border-radius:50%;background:linear-gradient(135deg,var(--p),var(--pd));display:flex;align-items:center;justify-content:center;margin:0 auto 12px;font-size:30px;color:white;box-shadow:0 8px 24px rgba(0,200,83,0.3);position:relative;}
+.prof-edit-ico{position:absolute;bottom:-2px;right:-2px;width:24px;height:24px;background:var(--acc);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;color:white;border:2px solid var(--dark2);}
+.prof-name{font-size:18px;font-weight:700;color:white;}
+.prof-phone{font-size:12px;color:rgba(255,255,255,0.5);margin-top:3px;}
+.prof-badge{display:inline-flex;align-items:center;gap:5px;margin-top:10px;padding:5px 14px;border-radius:20px;font-size:11px;font-weight:700;}
+.prof-badge.premium{background:rgba(0,200,83,0.2);color:var(--p);border:1px solid rgba(0,200,83,0.3);}
+.prof-badge.free{background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.6);}
+.prof-menu{background:var(--white);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh);}
+.pm-item{display:flex;align-items:center;gap:14px;padding:15px 16px;border-bottom:1px solid var(--grayL);cursor:pointer;transition:var(--tr);}
+.pm-item:last-child{border:none;}
+.pm-item:hover{background:var(--grayL);}
+.pm-ico{width:38px;height:38px;border-radius:10px;background:var(--pl);display:flex;align-items:center;justify-content:center;color:var(--p);font-size:16px;flex-shrink:0;}
+.pm-ico.sec{background:#E3F2FD;color:var(--acc);}
+.pm-ico.warn{background:#FFF8E1;color:#F57C00;}
+.pm-ico.danger{background:#FFEBEE;color:var(--danger);}
+.pm-text{flex:1;}
+.pm-text h4{font-size:13px;font-weight:600;color:var(--dark);}
+.pm-text p{font-size:11px;color:var(--gray2);margin-top:1px;}
+.pm-meta{font-size:12px;color:var(--p);font-weight:600;}
+.pm-arrow{color:var(--gray2);}
+.prof-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px;}
+.prof-stat{background:var(--white);border-radius:var(--rs);padding:14px;text-align:center;box-shadow:var(--sh);}
+.prof-stat-val{font-size:20px;font-weight:800;color:var(--p);}
+.prof-stat-lbl{font-size:10px;color:var(--gray2);font-weight:500;margin-top:2px;}
+
+/* ===== ADMIN PAGE ===== */
+.admin-login{position:fixed;inset:0;background:linear-gradient(160deg,var(--dark) 0%,#0d2137 100%);display:flex;align-items:center;justify-content:center;padding:20px;z-index:600;}
+.admin-login-box{background:rgba(255,255,255,0.04);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.08);border-radius:24px;padding:36px 28px;width:100%;max-width:360px;box-shadow:0 20px 60px rgba(0,0,0,0.5);}
+.admin-login-logo{text-align:center;margin-bottom:28px;}
+.admin-login-logo .ico{width:70px;height:70px;background:linear-gradient(135deg,var(--p),var(--pd));border-radius:20px;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;box-shadow:0 8px 24px rgba(0,200,83,0.4);}
+.admin-login-logo .ico i{font-size:32px;color:white;}
+.admin-login-logo h2{font-size:22px;font-weight:800;color:white;}
+.admin-login-logo p{font-size:12px;color:rgba(255,255,255,0.4);margin-top:4px;}
+.admin-inp-grp{margin-bottom:14px;}
+.admin-inp-lbl{font-size:11px;font-weight:600;color:rgba(255,255,255,0.5);margin-bottom:7px;display:block;text-transform:uppercase;letter-spacing:0.4px;}
+.admin-inp{width:100%;padding:13px 16px;background:rgba(255,255,255,0.07);border:1.5px solid rgba(255,255,255,0.1);border-radius:var(--rs);font-family:'Poppins',sans-serif;font-size:14px;color:white;outline:none;transition:var(--tr);}
+.admin-inp:focus{border-color:var(--p);background:rgba(255,255,255,0.1);}
+.admin-inp::placeholder{color:rgba(255,255,255,0.25);}
+.admin-login-btn{width:100%;padding:14px;border-radius:var(--r);border:none;background:linear-gradient(135deg,var(--p),var(--pd));color:white;font-family:'Poppins',sans-serif;font-size:15px;font-weight:700;cursor:pointer;transition:var(--tr);margin-top:6px;box-shadow:0 4px 16px rgba(0,200,83,0.3);}
+.admin-login-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,200,83,0.4);}
+
+/* ADMIN PANEL */
+.admin-panel{display:none;flex-direction:column;height:100%;}
+.admin-panel.active{display:flex;}
+.adm-hdr{background:linear-gradient(135deg,var(--dark),var(--dark2));padding:14px 16px;flex-shrink:0;display:flex;align-items:center;justify-content:space-between;}
+.adm-title{font-size:17px;font-weight:700;color:white;display:flex;align-items:center;gap:8px;}
+.adm-title i{color:var(--p);}
+.adm-logout{background:rgba(255,255,255,0.1);border:none;color:rgba(255,255,255,0.7);padding:7px 12px;border-radius:8px;cursor:pointer;font-family:'Poppins',sans-serif;font-size:12px;display:flex;align-items:center;gap:5px;transition:var(--tr);}
+.adm-logout:hover{background:rgba(255,23,68,0.2);color:var(--danger);}
+.adm-stats-row{display:flex;gap:10px;padding:12px 16px;overflow-x:auto;scrollbar-width:none;flex-shrink:0;background:linear-gradient(135deg,var(--dark),var(--dark2));}
+.adm-stats-row::-webkit-scrollbar{display:none;}
+.adm-stat{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.08);border-radius:var(--rs);padding:12px 16px;min-width:110px;flex-shrink:0;}
+.adm-stat-val{font-size:22px;font-weight:800;color:white;}
+.adm-stat-lbl{font-size:10px;color:rgba(255,255,255,0.5);margin-top:2px;}
+.adm-stat-icon{font-size:20px;margin-bottom:4px;}
+.adm-tabs-wrap{background:var(--white);border-bottom:1px solid var(--grayM);padding:12px 16px;flex-shrink:0;}
+.adm-tabs{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;}
+.adm-tabs::-webkit-scrollbar{display:none;}
+.adm-tab{padding:8px 16px;border-radius:20px;border:none;font-family:'Poppins',sans-serif;font-size:12px;font-weight:600;color:var(--gray);cursor:pointer;transition:var(--tr);background:var(--grayL);white-space:nowrap;display:flex;align-items:center;gap:5px;}
+.adm-tab.active{background:var(--p);color:white;box-shadow:0 3px 10px rgba(0,200,83,0.3);}
+.adm-content{flex:1;overflow-y:auto;padding:16px;scrollbar-width:none;}
+.adm-content::-webkit-scrollbar{display:none;}
+
+/* ADMIN PUBLISH FORM */
+.publish-form{background:var(--white);border-radius:var(--r);padding:18px;box-shadow:var(--sh);}
+.publish-form h3{font-size:16px;font-weight:700;color:var(--dark);margin-bottom:16px;display:flex;align-items:center;gap:7px;}
+.publish-form h3 i{color:var(--p);}
+.img-upload-area{border:2px dashed var(--grayM);border-radius:var(--r);padding:28px 20px;text-align:center;cursor:pointer;transition:var(--tr);margin-bottom:16px;position:relative;overflow:hidden;}
+.img-upload-area:hover{border-color:var(--p);background:var(--pl);}
+.img-upload-area.has-img{padding:0;border:2px solid var(--p);}
+.img-upload-area input[type="file"]{position:absolute;inset:0;opacity:0;cursor:pointer;}
+.img-upload-area i{font-size:36px;color:var(--gray2);margin-bottom:8px;display:block;}
+.img-upload-area p{font-size:13px;color:var(--gray2);}
+.img-upload-area span{font-size:11px;color:var(--gray2);opacity:0.7;}
+#imgPreview{width:100%;max-height:220px;object-fit:contain;display:none;border-radius:calc(var(--r) - 2px);}
+#imgPreview.active{display:block;}
+.price-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.pub-btn{width:100%;padding:15px;border-radius:var(--r);border:none;background:linear-gradient(135deg,var(--p),var(--pd));color:white;font-family:'Poppins',sans-serif;font-size:15px;font-weight:700;cursor:pointer;transition:var(--tr);display:flex;align-items:center;justify-content:center;gap:8px;margin-top:6px;box-shadow:0 4px 16px rgba(0,200,83,0.3);}
+.pub-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,200,83,0.4);}
+.pub-btn:disabled{background:var(--grayM);color:var(--gray2);box-shadow:none;transform:none;}
+
+/* ADMIN PRODUCTS TABLE */
+.adm-prod-card{background:var(--white);border-radius:var(--r);margin-bottom:10px;overflow:hidden;box-shadow:var(--sh);border:1px solid var(--grayM);}
+.adm-prod-hdr{display:flex;align-items:center;gap:12px;padding:12px 14px;border-bottom:1px solid var(--grayL);}
+.adm-prod-thumb{width:60px;height:60px;border-radius:10px;object-fit:cover;background:var(--grayL);flex-shrink:0;}
+.adm-prod-thumb-ph{width:60px;height:60px;border-radius:10px;background:var(--grayL);display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0;}
+.adm-prod-info{flex:1;min-width:0;}
+.adm-prod-name{font-size:14px;font-weight:700;color:var(--dark);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.adm-prod-meta{font-size:11px;color:var(--gray2);margin-top:2px;}
+.adm-prod-prices{display:flex;align-items:center;gap:8px;}
+.adm-prod-price-low{font-size:16px;font-weight:800;color:var(--p);}
+.adm-prod-price-high{font-size:12px;color:var(--gray2);text-decoration:line-through;}
+.adm-prod-disc{font-size:10px;font-weight:700;background:var(--danger);color:white;padding:2px 7px;border-radius:10px;}
+.adm-prod-actions{display:flex;gap:8px;padding:10px 14px;}
+.adm-act-btn{flex:1;padding:8px;border-radius:var(--rs);border:none;font-family:'Poppins',sans-serif;font-size:12px;font-weight:600;cursor:pointer;transition:var(--tr);display:flex;align-items:center;justify-content:center;gap:5px;}
+.adm-act-edit{background:var(--pl);color:var(--p);}
+.adm-act-edit:hover{background:var(--p);color:white;}
+.adm-act-del{background:#FFEBEE;color:var(--danger);}
+.adm-act-del:hover{background:var(--danger);color:white;}
+.adm-act-toggle{background:#E3F2FD;color:var(--acc);}
+.adm-act-toggle:hover{background:var(--acc);color:white;}
+
+/* ADMIN USERS TABLE */
+.adm-user-row{background:var(--white);border-radius:var(--rs);padding:12px 14px;margin-bottom:8px;display:flex;align-items:center;gap:12px;box-shadow:var(--sh);}
+.adm-user-avatar{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--p),var(--pd));display:flex;align-items:center;justify-content:center;color:white;font-size:18px;font-weight:700;flex-shrink:0;}
+.adm-user-info{flex:1;}
+.adm-user-name{font-size:13px;font-weight:600;color:var(--dark);}
+.adm-user-sub{font-size:11px;color:var(--gray2);}
+.adm-user-badge{font-size:10px;font-weight:700;padding:3px 10px;border-radius:20px;}
+.adm-user-badge.premium{background:var(--pl);color:var(--p);}
+.adm-user-badge.free{background:var(--grayL);color:var(--gray2);}
+
+/* ADMIN MESSAGES */
+.adm-msg-row{background:var(--white);border-radius:var(--r);padding:14px;margin-bottom:10px;box-shadow:var(--sh);border-left:3px solid var(--p);cursor:pointer;transition:var(--tr);}
+.adm-msg-row:hover{transform:translateX(3px);}
+.adm-msg-row.unread{border-left-color:var(--acc);}
+.adm-msg-hdr{display:flex;justify-content:space-between;margin-bottom:6px;}
+.adm-msg-from{font-size:13px;font-weight:700;color:var(--dark);}
+.adm-msg-time{font-size:11px;color:var(--gray2);}
+.adm-msg-txt{font-size:12px;color:var(--gray);line-height:1.5;}
+.adm-msg-unread-badge{display:inline-block;background:var(--danger);color:white;font-size:9px;font-weight:700;padding:1px 6px;border-radius:10px;margin-left:5px;}
+
+/* ===== AI CHAT ===== */
+.ai-chat{position:absolute;bottom:80px;left:12px;right:12px;background:var(--white);border-radius:20px;box-shadow:var(--shXL);z-index:300;overflow:hidden;display:none;flex-direction:column;max-height:430px;}
+.ai-chat.open{display:flex;animation:slideUp 0.3s cubic-bezier(0.4,0,0.2,1);}
+@keyframes slideUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+.ai-hdr{background:linear-gradient(135deg,var(--p),var(--pd));padding:13px 16px;display:flex;align-items:center;gap:11px;flex-shrink:0;}
+.ai-av{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;border:2px solid rgba(255,255,255,0.3);position:relative;}
+.ai-av i{color:white;font-size:17px;}
+.ai-av-dot{position:absolute;bottom:0;right:0;width:10px;height:10px;background:#69F0AE;border-radius:50%;border:2px solid var(--pd);}
+.ai-info{flex:1;}
+.ai-info h4{color:white;font-size:13px;font-weight:700;}
+.ai-info p{color:rgba(255,255,255,0.65);font-size:10px;}
+.ai-close{background:rgba(255,255,255,0.15);border:none;color:white;width:28px;height:28px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:var(--tr);}
+.ai-close:hover{background:rgba(255,255,255,0.25);}
+.ai-msgs{flex:1;overflow-y:auto;padding:12px;display:flex;flex-direction:column;gap:9px;scroll-behavior:smooth;scrollbar-width:none;}
+.ai-msgs::-webkit-scrollbar{display:none;}
+.ai-msg{max-width:84%;}
+.ai-msg.bot{align-self:flex-start;}
+.ai-msg.user{align-self:flex-end;}
+.ai-bubble{padding:9px 13px;border-radius:15px;font-size:12px;line-height:1.55;}
+.ai-msg.bot .ai-bubble{background:var(--grayL);color:var(--dark);border-bottom-left-radius:3px;}
+.ai-msg.user .ai-bubble{background:linear-gradient(135deg,var(--p),var(--pd));color:white;border-bottom-right-radius:3px;}
+.ai-typing{display:flex;gap:4px;padding:10px 13px;background:var(--grayL);border-radius:15px;border-bottom-left-radius:3px;width:fit-content;}
+.ai-typing span{width:6px;height:6px;background:var(--gray2);border-radius:50%;animation:typDot 1.2s infinite;}
+.ai-typing span:nth-child(2){animation-delay:.2s;}
+.ai-typing span:nth-child(3){animation-delay:.4s;}
+@keyframes typDot{0%,60%,100%{transform:translateY(0);}30%{transform:translateY(-5px);}}
+.ai-quick{display:flex;gap:7px;padding:0 12px 9px;overflow-x:auto;scrollbar-width:none;flex-shrink:0;}
+.ai-quick::-webkit-scrollbar{display:none;}
+.ai-qbtn{background:var(--pl);color:var(--p);border:1px solid rgba(0,200,83,0.25);padding:5px 11px;border-radius:20px;font-size:11px;font-weight:500;cursor:pointer;white-space:nowrap;font-family:'Poppins',sans-serif;transition:var(--tr);}
+.ai-qbtn:hover{background:var(--p);color:white;}
+.ai-input-row{display:flex;gap:8px;padding:10px 12px;border-top:1px solid var(--grayL);flex-shrink:0;}
+.ai-inp{flex:1;padding:9px 13px;border:2px solid var(--grayM);border-radius:22px;font-family:'Poppins',sans-serif;font-size:12px;outline:none;transition:var(--tr);}
+.ai-inp:focus{border-color:var(--p);}
+.ai-send{width:36px;height:36px;border-radius:50%;background:var(--p);border:none;color:white;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:var(--tr);flex-shrink:0;font-size:14px;}
+.ai-send:hover{background:var(--pd);transform:scale(1.05);}
+
+/* ===== ADMIN CHAT ===== */
+.admin-chat{position:absolute;bottom:0;left:0;right:0;height:100%;background:var(--white);z-index:400;display:none;flex-direction:column;}
+.admin-chat.open{display:flex;animation:slideUp 0.25s ease;}
+.adm-chat-hdr{background:linear-gradient(135deg,var(--dark),var(--dark2));padding:14px 16px;display:flex;align-items:center;gap:12px;flex-shrink:0;}
+.adm-chat-back{background:rgba(255,255,255,0.1);border:none;color:white;width:34px;height:34px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:var(--tr);}
+.adm-chat-back:hover{background:rgba(255,255,255,0.2);}
+.adm-chat-av{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--p),var(--pd));display:flex;align-items:center;justify-content:center;font-size:18px;color:white;font-weight:700;flex-shrink:0;}
+.adm-chat-info{flex:1;}
+.adm-chat-name{font-size:14px;font-weight:700;color:white;}
+.adm-chat-status{font-size:11px;color:rgba(255,255,255,0.5);}
+.adm-chat-status.online{color:var(--p);}
+.adm-chat-msgs{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;scrollbar-width:none;background:#F8FAFC;}
+.adm-chat-msgs::-webkit-scrollbar{display:none;}
+.chat-msg{max-width:80%;}
+.chat-msg.sent{align-self:flex-end;}
+.chat-msg.recv{align-self:flex-start;}
+.chat-bubble{padding:10px 14px;border-radius:16px;font-size:13px;line-height:1.55;}
+.chat-msg.recv .chat-bubble{background:white;color:var(--dark);border-bottom-left-radius:3px;box-shadow:0 1px 4px rgba(0,0,0,0.08);}
+.chat-msg.sent .chat-bubble{background:linear-gradient(135deg,var(--p),var(--pd));color:white;border-bottom-right-radius:3px;}
+.chat-time{font-size:10px;color:var(--gray2);margin-top:3px;padding:0 4px;}
+.chat-time.sent{text-align:right;}
+.adm-chat-inp-row{display:flex;gap:10px;padding:12px 16px;border-top:1px solid var(--grayM);background:white;flex-shrink:0;}
+.adm-chat-inp{flex:1;padding:11px 16px;border:2px solid var(--grayM);border-radius:24px;font-family:'Poppins',sans-serif;font-size:13px;outline:none;transition:var(--tr);}
+.adm-chat-inp:focus{border-color:var(--p);}
+.adm-chat-send{width:42px;height:42px;border-radius:50%;background:var(--p);border:none;color:white;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:var(--tr);font-size:16px;}
+.adm-chat-send:hover{background:var(--pd);}
+
+/* FABs */
+.fab-chat{position:absolute;bottom:88px;right:14px;width:50px;height:50px;background:linear-gradient(135deg,var(--acc),#1565C0);border-radius:50%;box-shadow:0 6px 20px rgba(41,121,255,0.4);border:none;color:white;font-size:20px;cursor:pointer;transition:var(--tr);display:flex;align-items:center;justify-content:center;z-index:200;animation:fabBounce 3s ease-in-out infinite;}
+.fab-chat:hover{transform:scale(1.1);}
+@keyframes fabBounce{0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);}}
+.fab-ai{position:absolute;bottom:88px;right:72px;width:50px;height:50px;background:linear-gradient(135deg,var(--p),var(--pd));border-radius:50%;box-shadow:0 6px 20px rgba(0,200,83,0.4);border:none;color:white;font-size:20px;cursor:pointer;display:none;align-items:center;justify-content:center;z-index:200;transition:var(--tr);animation:fabBounce 3s ease-in-out infinite 1s;}
+.fab-ai:hover{transform:scale(1.1);}
+.fab-chat-badge{position:absolute;top:-2px;right:-2px;width:16px;height:16px;background:var(--danger);border-radius:50%;font-size:9px;color:white;display:flex;align-items:center;justify-content:center;font-weight:700;border:2px solid white;}
+
+/* MODALS */
+.modal-ov{position:absolute;inset:0;background:rgba(0,0,0,0.6);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;z-index:1000;padding:16px;}
+.modal-ov.open{display:flex;}
+.modal{background:var(--white);border-radius:22px;width:100%;max-width:420px;max-height:88vh;overflow-y:auto;animation:modalIn 0.3s ease;scrollbar-width:none;}
+.modal::-webkit-scrollbar{display:none;}
+@keyframes modalIn{from{opacity:0;transform:scale(0.9) translateY(20px);}to{opacity:1;transform:scale(1) translateY(0);}}
+.modal-hdr{padding:22px 22px 16px;border-bottom:1px solid var(--grayL);display:flex;justify-content:space-between;align-items:center;}
+.modal-title{font-size:18px;font-weight:700;color:var(--dark);}
+.modal-close{width:30px;height:30px;border-radius:50%;background:var(--grayL);border:none;color:var(--gray);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:var(--tr);}
+.modal-close:hover{background:var(--danger);color:white;}
+.modal-body{padding:18px 22px;}
+.modal-footer{padding:14px 22px 22px;display:flex;gap:10px;}
+.btn{flex:1;padding:13px 18px;border-radius:var(--rs);border:none;font-family:'Poppins',sans-serif;font-size:14px;font-weight:600;cursor:pointer;transition:var(--tr);display:flex;align-items:center;justify-content:center;gap:7px;}
+.btn-primary{background:linear-gradient(135deg,var(--p),var(--pd));color:white;box-shadow:0 4px 14px rgba(0,200,83,0.3);}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(0,200,83,0.4);}
+.btn-sec{background:var(--grayL);color:var(--dark);}
+.btn-sec:hover{background:var(--grayM);}
+.btn-full{width:100%;}
+
+/* PLAN CARDS */
+.plan-card{background:var(--grayL);border-radius:var(--rs);padding:16px;margin-bottom:10px;border:2px solid transparent;transition:var(--tr);cursor:pointer;position:relative;}
+.plan-card:hover{border-color:var(--p);}
+.plan-card.selected{border-color:var(--p);background:var(--pl);}
+.plan-pop{position:absolute;top:-10px;right:14px;background:var(--sec);color:white;font-size:10px;font-weight:700;padding:3px 10px;border-radius:20px;}
+.plan-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;}
+.plan-name{font-size:14px;font-weight:700;color:var(--dark);}
+.plan-price{font-size:22px;font-weight:800;color:var(--p);}
+.plan-price span{font-size:11px;font-weight:400;color:var(--gray2);}
+.plan-feats{list-style:none;}
+.plan-feats li{font-size:12px;color:var(--gray);padding:3px 0;display:flex;align-items:center;gap:7px;}
+.plan-feats li i{color:var(--p);font-size:11px;}
+
+/* PAYMENT */
+.pay-method{display:flex;align-items:center;gap:12px;padding:13px;background:var(--grayL);border-radius:var(--rs);margin-bottom:8px;cursor:pointer;transition:var(--tr);border:2px solid transparent;}
+.pay-method:hover{border-color:var(--p);}
+.pay-method.selected{border-color:var(--p);background:var(--pl);}
+.pay-ico{width:44px;height:44px;border-radius:11px;background:white;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;}
+.pay-info{flex:1;}
+.pay-name{font-size:13px;font-weight:600;color:var(--dark);}
+.pay-desc{font-size:11px;color:var(--gray2);}
+.pay-check{width:22px;height:22px;border-radius:50%;border:2px solid var(--gray2);display:flex;align-items:center;justify-content:center;transition:var(--tr);}
+.pay-method.selected .pay-check{background:var(--p);border-color:var(--p);color:white;}
+.mpesa-box{background:linear-gradient(135deg,var(--pl),#C8E6C9);padding:16px;border-radius:var(--rs);text-align:center;margin-bottom:16px;}
+.mpesa-num{font-size:24px;font-weight:800;color:var(--dark);font-family:monospace;letter-spacing:1px;}
+.mpesa-owner{font-size:12px;color:var(--gray2);margin-top:4px;}
+.mpesa-amt{font-size:18px;font-weight:700;color:var(--p);margin-top:8px;}
+
+/* INSTALL BANNER */
+.install-banner{position:fixed;bottom:0;left:0;right:0;max-width:480px;margin:0 auto;background:linear-gradient(135deg,var(--dark),#0d2137);border-top:2px solid rgba(0,200,83,0.4);padding:14px 16px;z-index:3000;display:none;align-items:center;gap:12px;box-shadow:0 -6px 24px rgba(0,0,0,0.3);animation:slideUpBanner 0.4s ease;}
+.install-banner.show{display:flex;}
+@keyframes slideUpBanner{from{transform:translateY(100%);}to{transform:translateY(0);}}
+.install-banner-ico{width:48px;height:48px;background:linear-gradient(135deg,var(--p),var(--pd));border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:22px;box-shadow:0 4px 12px rgba(0,200,83,0.4);}
+.install-banner-text{flex:1;}
+.install-banner-text h4{font-size:13px;font-weight:700;color:white;margin-bottom:2px;}
+.install-banner-text p{font-size:11px;color:rgba(255,255,255,0.6);line-height:1.4;}
+.install-banner-btns{display:flex;gap:8px;flex-shrink:0;}
+.install-btn-yes{background:linear-gradient(135deg,var(--p),var(--pd));color:white;border:none;padding:9px 16px;border-radius:10px;font-family:'Poppins',sans-serif;font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap;}
+.install-btn-no{background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.6);border:none;padding:9px 12px;border-radius:10px;font-family:'Poppins',sans-serif;font-size:12px;cursor:pointer;}
+
+/* TOAST */
+.toast{position:absolute;bottom:90px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--dark2);color:white;padding:11px 20px;border-radius:22px;font-size:13px;font-weight:500;white-space:nowrap;z-index:2000;opacity:0;transition:all 0.3s ease;pointer-events:none;display:flex;align-items:center;gap:8px;box-shadow:0 8px 24px rgba(0,0,0,0.3);}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+.toast.success i{color:var(--p);}
+.toast.error i{color:var(--danger);}
+
+/* LOADING */
+.loading-box{display:none;flex-direction:column;align-items:center;justify-content:center;padding:60px 20px;}
+.loading-box.show{display:flex;}
+.spin{width:50px;height:50px;border:3px solid var(--grayL);border-top-color:var(--p);border-radius:50%;animation:spin 0.85s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg);}}
+.spin-lbl{margin-top:14px;font-size:13px;color:var(--gray2);}
+
+/* EMPTY STATE */
+.empty{text-align:center;padding:50px 20px;}
+.empty i{font-size:56px;color:var(--grayM);margin-bottom:14px;display:block;}
+.empty h3{font-size:16px;color:var(--dark);margin-bottom:6px;}
+.empty p{font-size:13px;color:var(--gray2);line-height:1.6;}
+
+/* UTILS */
+.divider{height:1px;background:var(--grayL);margin:12px 0;}
+.badge-new{background:linear-gradient(135deg,var(--acc),#1565C0);color:white;font-size:9px;font-weight:700;padding:2px 6px;border-radius:6px;text-transform:uppercase;letter-spacing:0.3px;}
+.text-green{color:var(--p);}
+.text-red{color:var(--danger);}
+.fw700{font-weight:700;}
+.fs12{font-size:12px;}
+.mt8{margin-top:8px;}
+.section-pad{padding:0 16px;}
+
+/* ===== REGISTER / ACCESS SCREEN ===== */
+#registerScreen{position:fixed;inset:0;background:linear-gradient(160deg,var(--dark) 0%,#0d2137 50%,#001a0a 100%);display:flex;align-items:center;justify-content:center;padding:20px;z-index:8000;overflow-y:auto;}
+.reg-box{background:rgba(255,255,255,0.05);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.1);border-radius:24px;padding:32px 24px;width:100%;max-width:360px;box-shadow:0 20px 60px rgba(0,0,0,0.5);}
+.reg-logo{text-align:center;margin-bottom:24px;}
+.reg-logo .ico{width:72px;height:72px;background:linear-gradient(135deg,var(--p),var(--pd));border-radius:20px;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;box-shadow:0 8px 24px rgba(0,200,83,0.4);}
+.reg-logo .ico i{font-size:32px;color:white;}
+.reg-logo h2{font-size:24px;font-weight:900;color:white;letter-spacing:1px;}
+.reg-logo h2 span{color:var(--p);}
+.reg-logo p{font-size:12px;color:rgba(255,255,255,0.4);margin-top:4px;}
+.reg-inp-grp{margin-bottom:14px;}
+.reg-inp-lbl{font-size:11px;font-weight:600;color:rgba(255,255,255,0.5);margin-bottom:7px;display:block;text-transform:uppercase;letter-spacing:0.4px;}
+.reg-inp{width:100%;padding:13px 16px;background:rgba(255,255,255,0.07);border:1.5px solid rgba(255,255,255,0.1);border-radius:var(--rs);font-family:'Poppins',sans-serif;font-size:14px;color:white;outline:none;transition:var(--tr);}
+.reg-inp:focus{border-color:var(--p);background:rgba(255,255,255,0.1);}
+.reg-inp::placeholder{color:rgba(255,255,255,0.25);}
+.reg-btn{width:100%;padding:14px;border-radius:var(--r);border:none;background:linear-gradient(135deg,var(--p),var(--pd));color:white;font-family:'Poppins',sans-serif;font-size:15px;font-weight:700;cursor:pointer;transition:var(--tr);margin-top:6px;box-shadow:0 4px 16px rgba(0,200,83,0.3);display:flex;align-items:center;justify-content:center;gap:8px;}
+.reg-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,200,83,0.4);}
+.reg-free-badge{background:rgba(0,200,83,0.15);border:1px solid rgba(0,200,83,0.3);border-radius:var(--rs);padding:12px 14px;margin-bottom:20px;text-align:center;}
+.reg-free-badge .title{font-size:14px;font-weight:700;color:var(--p);margin-bottom:3px;}
+.reg-free-badge .sub{font-size:11px;color:rgba(255,255,255,0.5);line-height:1.5;}
+
+/* ===== ACESSO BLOQUEADO ===== */
+#accessBlockedScreen{position:fixed;inset:0;background:linear-gradient(160deg,var(--dark) 0%,#1a0010 50%,#0a0f1e 100%);display:none;align-items:center;justify-content:center;padding:20px;z-index:7500;flex-direction:column;}
+#accessBlockedScreen.show{display:flex;}
+.blocked-box{background:rgba(255,255,255,0.05);backdrop-filter:blur(20px);border:1px solid rgba(255,23,68,0.2);border-radius:24px;padding:32px 24px;width:100%;max-width:360px;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.5);}
+.blocked-ico{width:80px;height:80px;background:linear-gradient(135deg,rgba(255,23,68,0.2),rgba(255,23,68,0.1));border:2px solid rgba(255,23,68,0.3);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:36px;}
+.blocked-title{font-size:20px;font-weight:800;color:white;margin-bottom:8px;}
+.blocked-sub{font-size:13px;color:rgba(255,255,255,0.5);line-height:1.6;margin-bottom:20px;}
+.trial-timer{background:rgba(255,193,7,0.1);border:1px solid rgba(255,193,7,0.3);border-radius:var(--rs);padding:14px;margin-bottom:20px;}
+.trial-timer-lbl{font-size:11px;color:rgba(255,255,255,0.4);margin-bottom:6px;}
+.trial-timer-val{font-size:28px;font-weight:800;color:var(--warn);font-family:monospace;}
+
+/* RESPONSIVE */
+@media(min-width:480px){
+  #app{border-left:1px solid var(--grayM);border-right:1px solid var(--grayM);}
+}
+</style>
+</head>
+<body>
+
+<!-- REGISTER SCREEN -->
+<div id="registerScreen" style="display:none;">
+  <div class="reg-box">
+    <div class="reg-logo">
+      <div class="ico"><i class="fas fa-tags"></i></div>
+      <h2>PRECY<span>Á</span> <span style="font-size:14px;background:linear-gradient(135deg,var(--warn),#FF8F00);color:white;padding:2px 8px;border-radius:6px;vertical-align:middle;">PRO</span></h2>
+      <p>Preços Reais · Moçambique</p>
+    </div>
+    <div class="reg-free-badge">
+      <div class="title">🎁 24 Horas Grátis!</div>
+      <div class="sub">Regista-te agora e tens <strong style="color:var(--p);">24 horas de acesso gratuito</strong> a todos os preços. Depois, activa o Premium por apenas 8 MZN/mês.</div>
+    </div>
+    <div class="reg-inp-grp">
+      <label class="reg-inp-lbl"><i class="fas fa-user" style="margin-right:5px;color:var(--p);"></i>Nome Completo</label>
+      <input class="reg-inp" id="regNome" type="text" placeholder="Ex: João Machava" autocomplete="name">
+    </div>
+    <div class="reg-inp-grp">
+      <label class="reg-inp-lbl"><i class="fas fa-phone" style="margin-right:5px;color:var(--p);"></i>Número de Telefone</label>
+      <input class="reg-inp" id="regTel" type="tel" placeholder="Ex: 84 123 4567" autocomplete="tel">
+    </div>
+    <button class="reg-btn" onclick="doRegister()">
+      <i class="fas fa-rocket"></i> Entrar Grátis (24h)
+    </button>
+    <div style="text-align:center;margin-top:16px;">
+      <span style="font-size:11px;color:rgba(255,255,255,0.25);">Ao entrar, aceitas os termos de uso do PRECYÁ PRO</span>
+    </div>
+  </div>
+</div>
+
+<!-- ACCESS BLOCKED SCREEN -->
+<div id="accessBlockedScreen">
+  <div class="blocked-box">
+    <div class="blocked-ico">⏰</div>
+    <div class="blocked-title">Período de Teste Terminou</div>
+    <div class="blocked-sub">As tuas 24 horas grátis expiraram. Activa o Premium para continuar a aceder aos melhores preços de Moçambique!</div>
+    <div style="background:rgba(0,200,83,0.1);border:1px solid rgba(0,200,83,0.2);border-radius:var(--rs);padding:14px;margin-bottom:16px;">
+      <div style="font-size:13px;font-weight:700;color:var(--p);margin-bottom:6px;">👑 Premium por apenas 8 MZN/mês</div>
+      <div style="font-size:11px;color:rgba(255,255,255,0.5);line-height:1.6;">✅ Acesso ilimitado a todos os preços<br>✅ Alertas automáticos de preço<br>✅ IA Assistente PRECYÁ<br>✅ Sem anúncios</div>
+    </div>
+    <button class="reg-btn" onclick="document.getElementById('accessBlockedScreen').classList.remove('show');openModal('premiumModal');" style="margin-bottom:10px;">
+      <i class="fas fa-crown"></i> Activar Premium Agora
+    </button>
+    <button onclick="document.getElementById('accessBlockedScreen').classList.remove('show');openModal('paymentModal');" style="width:100%;padding:12px;border-radius:var(--r);border:1px solid rgba(255,255,255,0.15);background:transparent;color:rgba(255,255,255,0.6);font-family:'Poppins',sans-serif;font-size:13px;font-weight:600;cursor:pointer;">
+      <i class="fas fa-paper-plane"></i> Já Paguei — Enviar Comprovativo
+    </button>
+    <div style="margin-top:14px;padding-top:14px;border-top:1px solid rgba(255,255,255,0.08);">
+      <span style="font-size:11px;color:rgba(255,255,255,0.25);cursor:pointer;" onclick="showRegisterScreen()">← Usar outra conta</span>
+    </div>
+  </div>
+</div>
+
+<!-- SPLASH -->
+<div id="splash">
+  <div class="spl-bg">
+    <div class="spl-blob spl-blob1"></div>
+    <div class="spl-blob spl-blob2"></div>
+  </div>
+  <div class="spl-logo"><i class="fas fa-tags"></i></div>
+  <div class="spl-title">PRECY<span>Á</span></div>
+  <div class="spl-badge">PRO</div>
+  <div class="spl-sub">Preços Reais · Moçambique</div>
+  <div class="spl-loader"><div class="spl-bar"></div></div>
+  <div class="spl-tagline">Versão 4.0 — Edição Final</div>
+</div>
+
+<!-- ONBOARDING -->
+<div id="onboarding">
+  <div class="onb-slides">
+    <div class="onb-slide active" data-slide="0">
+      <div class="onb-img onb-img1">🛒<div class="onb-badge"><i class="fas fa-star"></i></div></div>
+      <h2 class="onb-title">Bem-vindo ao <span>PRECYÁ</span> PRO</h2>
+      <p class="onb-desc">O único app que te mostra os <strong>preços reais</strong> dos produtos nos mercados e lojas de Moçambique.</p>
+    </div>
+    <div class="onb-slide" data-slide="1">
+      <div class="onb-img onb-img2">💰<div class="onb-badge"><i class="fas fa-bolt"></i></div></div>
+      <h2 class="onb-title">Poupa Dinheiro <span>Todos os Dias</span></h2>
+      <p class="onb-desc">Compare preços entre mercados e supermercados. Vê onde está <strong>mais barato</strong> antes de sair de casa.</p>
+      <div class="onb-features" style="margin-top:20px;">
+        <div class="onb-feat"><i class="fas fa-search-dollar"></i><span>Comparar Preços</span></div>
+        <div class="onb-feat"><i class="fas fa-bell"></i><span>Alertas de Preço</span></div>
+        <div class="onb-feat"><i class="fas fa-map-marker-alt"></i><span>Lojas Perto</span></div>
+        <div class="onb-feat"><i class="fas fa-robot"></i><span>IA Assistente</span></div>
+      </div>
+    </div>
+    <div class="onb-slide" data-slide="2">
+      <div class="onb-img onb-img3">📸<div class="onb-badge"><i class="fas fa-check"></i></div></div>
+      <h2 class="onb-title">Fotos <span>Reais</span> dos Produtos</h2>
+      <p class="onb-desc">Vê as <strong>fotos reais</strong> dos produtos antes de comprar. Sem surpresas, sem enganos — o que vês é o que encontras.</p>
+    </div>
+    <div class="onb-slide" data-slide="3">
+      <div class="onb-img onb-img4">🏪<div class="onb-badge"><i class="fas fa-store"></i></div></div>
+      <h2 class="onb-title">Para <span>Parceiros</span> e Vendedores</h2>
+      <div class="onb-partner-section">
+        <div class="onb-partner-title"><i class="fas fa-rocket"></i>Como publicar os seus produtos</div>
+        <div class="onb-partner-steps">
+          <div class="onb-step"><div class="onb-step-num">1</div><div class="onb-step-text">Contacte o administrador através do botão <strong style="color:white">Chat</strong> no app</div></div>
+          <div class="onb-step"><div class="onb-step-num">2</div><div class="onb-step-text">Registe a sua loja ou mercado — é <strong style="color:white">gratuito</strong></div></div>
+          <div class="onb-step"><div class="onb-step-num">3</div><div class="onb-step-text">O admin publica os seus produtos com <strong style="color:white">fotos e preços reais</strong></div></div>
+          <div class="onb-step"><div class="onb-step-num">4</div><div class="onb-step-text">Clientes encontram o seu negócio e <strong style="color:white">compram mais</strong></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="onb-slide" data-slide="4">
+      <div class="onb-img onb-img5">👑<div class="onb-badge"><i class="fas fa-gem"></i></div></div>
+      <h2 class="onb-title">Activa o <span>Premium</span></h2>
+      <p class="onb-desc">Acesso ilimitado a todos os preços, alertas automáticos e prioridade nos resultados. Por apenas <strong>8 MZN/mês</strong> ou <strong>90 MZN/ano</strong>.</p>
+    </div>
+  </div>
+  <div class="onb-bottom">
+    <div class="onb-dots">
+      <div class="onb-dot active"></div>
+      <div class="onb-dot"></div>
+      <div class="onb-dot"></div>
+      <div class="onb-dot"></div>
+      <div class="onb-dot"></div>
+    </div>
+    <div class="onb-btns">
+      <button class="onb-btn-skip" onclick="skipOnboarding()">Saltar</button>
+      <button class="onb-btn-next" onclick="nextOnbSlide()">Próximo <i class="fas fa-arrow-right"></i></button>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN APP -->
+<div id="app" style="display:none;">
+
+  <header class="hdr">
+    <div class="hdr-row1">
+      <div class="logo-wrap" onclick="showPage('home')">
+        <div class="logo-ico"><i class="fas fa-tags"></i></div>
+        <div>
+          <span class="logo-txt">PRECY<span>Á</span><span class="logo-pro">PRO</span></span>
+        </div>
+      </div>
+      <div class="hdr-right">
+        <button class="hdr-btn" onclick="openModal('notifModal')" title="Notificações">
+          <i class="fas fa-bell"></i>
+          <span class="hdr-notif-dot"></span>
+        </button>
+        <button class="hdr-btn" onclick="openModal('premiumModal')" title="Premium">
+          <i class="fas fa-crown" style="color:var(--warn)"></i>
+        </button>
+        <button class="hdr-btn" onclick="openDotsMenu()" id="dotsBtn" title="Menu">
+          <i class="fas fa-ellipsis-v"></i>
+        </button>
+      </div>
+    </div>
+    <div class="hdr-row2">
+      <div class="loc-pill" onclick="openModal('locationModal')">
+        <i class="fas fa-map-marker-alt"></i>
+        <span id="currentCity">Maputo</span>
+        <div class="loc-dot"></div>
+      </div>
+      <div class="search-wrap">
+        <i class="fas fa-search search-ico"></i>
+        <input class="search-inp" id="searchInput" placeholder="Buscar produto, mercado…" autocomplete="off" oninput="handleSearch(this.value)" onfocus="openSearch()" onblur="closeSearchDelay()">
+        <button class="search-mic" id="micBtn" onclick="toggleMic()"><i class="fas fa-microphone"></i></button>
+        <div class="search-drop" id="searchDrop"></div>
+      </div>
+    </div>
+    <div id="statusPill" class="status-pill premium">
+      <i class="fas fa-crown"></i><span>👑 Premium ativo — Acesso ilimitado!</span>
+    </div>
+  </header>
+
+  <div id="dotsMenu" style="position:absolute;top:10px;right:16px;background:white;border-radius:14px;box-shadow:0 10px 40px rgba(0,0,0,0.15);min-width:220px;z-index:500;display:none;overflow:hidden;animation:dropIn 0.15s ease;">
+    <div class="sug-item" onclick="closeDotsMenu();showPage('home')"><i class="fas fa-home" style="color:var(--p)"></i><span>Início</span></div>
+    <div class="sug-item" onclick="closeDotsMenu();openModal('premiumModal')"><i class="fas fa-crown" style="color:var(--warn)"></i><span>Activar Premium</span></div>
+    <div class="sug-item" onclick="closeDotsMenu();openModal('alertModal')"><i class="fas fa-bell" style="color:var(--acc)"></i><span>Novo Alerta de Preço</span></div>
+    <div class="sug-item" onclick="closeDotsMenu();showAdminLogin()"><i class="fas fa-shield-alt" style="color:var(--purple)"></i><span>Área do Admin</span></div>
+    <div class="sug-item" onclick="closeDotsMenu();openOnboarding()"><i class="fas fa-question-circle" style="color:var(--sec)"></i><span>Como usar o App</span></div>
+    <div class="sug-item" onclick="closeDotsMenu();openAdminChatFromUser()"><i class="fas fa-headset" style="color:var(--acc)"></i><span>Falar com Suporte</span></div>
+  </div>
+
+  <div class="main-scroll" id="mainScroll">
+
+    <div class="page active home-page" id="page-home">
+      <div class="cat-strip" id="catStrip">
+        <div class="cat-chip active" data-cat="all" onclick="filterCat('all',this)"><i class="fas fa-th"></i> Todos</div>
+        <div class="cat-chip" data-cat="food" onclick="filterCat('food',this)"><i class="fas fa-drumstick-bite"></i> Alimentação</div>
+        <div class="cat-chip" data-cat="drink" onclick="filterCat('drink',this)"><i class="fas fa-glass-water"></i> Bebidas</div>
+        <div class="cat-chip" data-cat="hygiene" onclick="filterCat('hygiene',this)"><i class="fas fa-pump-soap"></i> Higiene</div>
+        <div class="cat-chip" data-cat="service" onclick="filterCat('service',this)"><i class="fas fa-concierge-bell"></i> Serviços</div>
+        <div class="cat-chip" data-cat="clean" onclick="filterCat('clean',this)"><i class="fas fa-spray-can"></i> Limpeza</div>
+        <div class="cat-chip" data-cat="transport" onclick="filterCat('transport',this)"><i class="fas fa-bus"></i> Transporte</div>
+      </div>
+
+      <div class="banner-area">
+        <div class="banner" onclick="openModal('premiumModal')">
+          <div class="banner-bg"></div>
+          <div class="banner-blob"></div>
+          <div class="banner-emoji">🏷️</div>
+          <div class="banner-content">
+            <div><span class="banner-tag">✨ Novidade</span></div>
+            <div>
+              <div class="banner-title">Poupa até <span>30%</span><br>nos mercados locais</div>
+              <div class="banner-sub">Compara preços antes de sair de casa</div>
+            </div>
+            <div><span class="banner-cta">Ver ofertas <i class="fas fa-arrow-right"></i></span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="stats-strip">
+        <div class="stat-card"><div class="stat-icon">🛒</div><div class="stat-val" id="stat-products">0</div><div class="stat-lbl">Produtos</div></div>
+        <div class="stat-card"><div class="stat-icon">🏪</div><div class="stat-val" id="stat-stores">0</div><div class="stat-lbl">Mercados</div></div>
+        <div class="stat-card"><div class="stat-icon">💰</div><div class="stat-val">25%</div><div class="stat-lbl">Poupança média</div></div>
+        <div class="stat-card"><div class="stat-icon">📍</div><div class="stat-val" id="stat-city">MPT</div><div class="stat-lbl">Cidade</div></div>
+      </div>
+
+      <div class="sec-hdr">
+        <div class="sec-hdr-left"><i class="fas fa-fire-alt"></i><h2>Ofertas do Dia</h2></div>
+        <div class="sec-see-all" onclick="showPage('search')">Ver tudo <i class="fas fa-chevron-right"></i></div>
+      </div>
+      <div class="hscroll" id="dealsScroll"></div>
+
+      <div class="sec-hdr">
+        <div class="sec-hdr-left"><i class="fas fa-th-large"></i><h2>Todos os Produtos</h2></div>
+        <div class="sec-see-all" id="prodCount" style="color:var(--gray2)"></div>
+      </div>
+      <div class="prod-grid" id="prodGrid"></div>
+
+      <div class="loading-box show" id="homeLoading">
+        <div class="spin"></div>
+        <div class="spin-lbl">A carregar produtos…</div>
+      </div>
+
+      <div class="empty" id="homeEmpty" style="display:none;">
+        <i class="fas fa-box-open"></i>
+        <h3>Nenhum produto aqui</h3>
+        <p>O administrador ainda não publicou produtos nesta categoria.</p>
+      </div>
+    </div>
+
+    <div class="page" id="page-search">
+      <div class="search-page">
+        <div class="search-page-inp-wrap">
+          <i class="fas fa-search search-page-ico"></i>
+          <input class="search-page-inp" id="searchPageInp" placeholder="Buscar produto, mercado ou serviço…" oninput="doSearch(this.value)">
+        </div>
+        <div class="filter-row">
+          <button class="filter-btn active" onclick="setFilter('all',this)">Todos</button>
+          <button class="filter-btn" onclick="setFilter('food',this)">Alimentação</button>
+          <button class="filter-btn" onclick="setFilter('drink',this)">Bebidas</button>
+          <button class="filter-btn" onclick="setFilter('hygiene',this)">Higiene</button>
+          <button class="filter-btn" onclick="setFilter('service',this)">Serviços</button>
+        </div>
+
+        <div class="loading-box" id="searchLoading">
+          <div class="spin"></div>
+          <div class="spin-lbl">A procurar…</div>
+        </div>
+
+        <div class="search-results-list" id="searchResultsList"></div>
+
+        <div class="empty" id="searchEmpty" style="display:none;">
+          <i class="fas fa-search"></i>
+          <h3>Sem resultados</h3>
+          <p>Tenta outro produto ou verifica a ortografia.</p>
+        </div>
+
+        <div id="searchPlaceholder">
+          <div style="text-align:center;padding:40px 20px;">
+            <div style="font-size:56px;margin-bottom:14px;">🔍</div>
+            <h3 style="font-size:16px;color:var(--dark);margin-bottom:8px;">Busca Inteligente</h3>
+            <p style="font-size:13px;color:var(--gray2);line-height:1.6;">Escreve o nome de qualquer produto, mercado ou serviço para comparar preços.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page" id="page-alerts">
+      <div class="alerts-page">
+        <div class="alert-form-box">
+          <h3><i class="fas fa-bell"></i> Novo Alerta de Preço</h3>
+          <div class="form-grp">
+            <label class="form-lbl">Produto</label>
+            <input class="form-inp" id="alertProd" placeholder="Ex: Arroz 5kg, Óleo 1L…">
+          </div>
+          <div class="form-grp">
+            <label class="form-lbl">Preço máximo (MZN)</label>
+            <input class="form-inp" type="number" id="alertPrice" placeholder="Ex: 200">
+          </div>
+          <div class="form-grp">
+            <label class="form-lbl">Mercado</label>
+            <select class="form-sel" id="alertStore">
+              <option value="">Qualquer mercado</option>
+              <option>Mercado Central</option>
+              <option>Mercado Brandão</option>
+              <option>Shoprite</option>
+              <option>Mercado Xipamanine</option>
+              <option>Mini-Mercado Polana</option>
+            </select>
+          </div>
+          <button class="btn btn-primary btn-full" onclick="createAlert()"><i class="fas fa-bell"></i> Criar Alerta</button>
+        </div>
+        <div class="sec-hdr" style="padding:0 0 10px;">
+          <div class="sec-hdr-left"><i class="fas fa-history"></i><h2>Meus Alertas</h2></div>
+        </div>
+        <div id="alertsList"></div>
+      </div>
+    </div>
+
+    <div class="page" id="page-profile">
+      <div class="profile-page">
+        <div class="prof-hero">
+          <div class="prof-avatar">👤<div class="prof-edit-ico"><i class="fas fa-pen"></i></div></div>
+          <div class="prof-name" id="profName">Utilizador PRECYÁ</div>
+          <div class="prof-phone" id="profPhone">+258 84 000 0000</div>
+          <div class="prof-badge premium"><i class="fas fa-crown"></i> Premium Ativo</div>
+        </div>
+        <div class="prof-stats">
+          <div class="prof-stat"><div class="prof-stat-val">12</div><div class="prof-stat-lbl">Buscas</div></div>
+          <div class="prof-stat"><div class="prof-stat-val">3</div><div class="prof-stat-lbl">Alertas</div></div>
+          <div class="prof-stat"><div class="prof-stat-val">89MT</div><div class="prof-stat-lbl">Poupado</div></div>
+        </div>
+        <div class="prof-menu">
+          <div class="pm-item" onclick="openModal('premiumModal')">
+            <div class="pm-ico"><i class="fas fa-crown"></i></div>
+            <div class="pm-text"><h4>Plano Premium</h4><p>Acesso ilimitado a todos os preços</p></div>
+            <span class="pm-meta">Ativo</span>
+            <i class="fas fa-chevron-right pm-arrow"></i>
+          </div>
+          <div class="pm-item" onclick="showPage('alerts')">
+            <div class="pm-ico sec"><i class="fas fa-bell"></i></div>
+            <div class="pm-text"><h4>Meus Alertas</h4><p>Notificações de preço</p></div>
+            <i class="fas fa-chevron-right pm-arrow"></i>
+          </div>
+          <div class="pm-item" onclick="openAdminChatFromUser()">
+            <div class="pm-ico warn"><i class="fas fa-headset"></i></div>
+            <div class="pm-text"><h4>Suporte / Chat</h4><p>Falar com o administrador</p></div>
+            <i class="fas fa-chevron-right pm-arrow"></i>
+          </div>
+          <div class="pm-item" onclick="openOnboarding()">
+            <div class="pm-ico sec"><i class="fas fa-book-open"></i></div>
+            <div class="pm-text"><h4>Como usar o App</h4><p>Guia de utilizador e parceiros</p></div>
+            <i class="fas fa-chevron-right pm-arrow"></i>
+          </div>
+          <div class="pm-item" onclick="openModal('locationModal')">
+            <div class="pm-ico"><i class="fas fa-map-marker-alt"></i></div>
+            <div class="pm-text"><h4>Localização</h4><p>Cidade actual</p></div>
+            <span class="pm-meta" id="profCity">Maputo</span>
+            <i class="fas fa-chevron-right pm-arrow"></i>
+          </div>
+          <div class="pm-item" onclick="showAdminLogin()">
+            <div class="pm-ico" style="background:#F3E5F5;"><i class="fas fa-shield-alt" style="color:var(--purple)"></i></div>
+            <div class="pm-text"><h4>Área do Administrador</h4><p>Gestão de produtos e utilizadores</p></div>
+            <i class="fas fa-chevron-right pm-arrow"></i>
+          </div>
+          <div class="pm-item" onclick="confirmLogout()">
+            <div class="pm-ico danger"><i class="fas fa-sign-out-alt"></i></div>
+            <div class="pm-text"><h4>Sair</h4><p>Terminar sessão</p></div>
+            <i class="fas fa-chevron-right pm-arrow"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <nav class="bnav">
+    <div class="nv active" id="nv-home" onclick="showPage('home')">
+      <div class="nv-ico"><i class="fas fa-home"></i></div>
+      <div class="nv-lbl">Início</div>
+    </div>
+    <div class="nv" id="nv-search" onclick="showPage('search')">
+      <div class="nv-ico"><i class="fas fa-search"></i></div>
+      <div class="nv-lbl">Buscar</div>
+    </div>
+    <div class="nv" id="nv-alerts" onclick="showPage('alerts')">
+      <div class="nv-ico"><i class="fas fa-bell"></i><span class="nv-badge" id="alertBadge" style="display:none">0</span></div>
+      <div class="nv-lbl">Alertas</div>
+    </div>
+    <div class="nv" id="nv-profile" onclick="showPage('profile')">
+      <div class="nv-ico"><i class="fas fa-user"></i></div>
+      <div class="nv-lbl">Perfil</div>
+    </div>
+  </nav>
+
+  <button class="fab-chat" onclick="toggleAdminChat()" title="Chat com Suporte">
+    <i class="fas fa-comments"></i>
+    <span class="fab-chat-badge" id="chatBadge" style="display:none">1</span>
+  </button>
+  <button class="fab-ai" id="fabAi" onclick="toggleAiChat()" title="IA Assistente">
+    <i class="fas fa-robot"></i>
+  </button>
+
+  <div class="ai-chat" id="aiChat">
+    <div class="ai-hdr">
+      <div class="ai-av"><i class="fas fa-robot"></i><div class="ai-av-dot"></div></div>
+      <div class="ai-info"><h4>PRECYÁ IA</h4><p>Assistente de preços • Online</p></div>
+      <button class="ai-close" onclick="toggleAiChat()"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="ai-msgs" id="aiMsgs">
+      <div class="ai-msg bot"><div class="ai-bubble">👋 Olá! Sou o PRECYÁ IA. Pergunta-me sobre preços em Moçambique e digo-te onde comprar mais barato! 🇲🇿</div></div>
+    </div>
+    <div class="ai-quick">
+      <button class="ai-qbtn" onclick="sendAiQuick('Onde está o arroz mais barato?')">🍚 Arroz barato</button>
+      <button class="ai-qbtn" onclick="sendAiQuick('Qual o óleo mais barato?')">🫙 Óleo</button>
+      <button class="ai-qbtn" onclick="sendAiQuick('Como poupar mais?')">💰 Poupar</button>
+      <button class="ai-qbtn" onclick="sendAiQuick('Mercados perto de mim')">📍 Perto</button>
+    </div>
+    <div class="ai-input-row">
+      <input class="ai-inp" id="aiInp" placeholder="Pergunta sobre preços…" onkeydown="if(event.key==='Enter')sendAiMsg()">
+      <button class="ai-send" onclick="sendAiMsg()"><i class="fas fa-paper-plane"></i></button>
+    </div>
+  </div>
+
+  <div class="admin-chat" id="adminChat">
+    <div class="adm-chat-hdr">
+      <button class="adm-chat-back" onclick="closeAdminChat()"><i class="fas fa-arrow-left"></i></button>
+      <div class="adm-chat-av">A</div>
+      <div class="adm-chat-info">
+        <div class="adm-chat-name">Suporte PRECYÁ</div>
+        <div class="adm-chat-status online"><i class="fas fa-circle" style="font-size:8px;"></i> Online</div>
+      </div>
+    </div>
+    <div class="adm-chat-msgs" id="adminChatMsgs">
+      <div class="chat-msg recv">
+        <div class="chat-bubble">Olá! 👋 Bem-vindo ao suporte PRECYÁ. Como posso ajudar?</div>
+        <div class="chat-time">Agora</div>
+      </div>
+    </div>
+    <div class="adm-chat-inp-row">
+      <input class="adm-chat-inp" id="adminChatInp" placeholder="Escreve uma mensagem…" onkeydown="if(event.key==='Enter')sendAdminChatMsg()">
+      <button class="adm-chat-send" onclick="sendAdminChatMsg()"><i class="fas fa-paper-plane"></i></button>
+    </div>
+  </div>
+
+</div>
+
+<!-- ADMIN AREA -->
+<div id="adminArea" style="display:none;position:fixed;inset:0;z-index:700;max-width:480px;margin:0 auto;">
+
+  <div class="admin-login" id="adminLoginScreen">
+    <div class="admin-login-box">
+      <div class="admin-login-logo">
+        <div class="ico"><i class="fas fa-shield-alt"></i></div>
+        <h2>Admin PRECYÁ</h2>
+        <p>Área restrita — Administradores</p>
+      </div>
+      <form onsubmit="event.preventDefault();adminLogin();" autocomplete="on">
+      <div class="admin-inp-grp">
+        <label class="admin-inp-lbl"><i class="fab fa-google" style="color:#EA4335;margin-right:5px;"></i>Gmail do Administrador</label>
+        <input class="admin-inp" id="adminUser" name="email" placeholder="admin@gmail.com" type="email" autocomplete="email">
+      </div>
+      <div class="admin-inp-grp">
+        <label class="admin-inp-lbl">Palavra-passe</label>
+        <div style="position:relative;">
+          <input class="admin-inp" id="adminPass" name="password" type="password" placeholder="••••••••" autocomplete="current-password" style="padding-right:44px;">
+          <button type="button" onclick="togglePassVis()" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;color:rgba(255,255,255,0.5);cursor:pointer;font-size:16px;"><i class="fas fa-eye" id="passVisIco"></i></button>
+        </div>
+      </div>
+      <button type="submit" class="admin-login-btn"><i class="fas fa-unlock"></i> Entrar no Painel</button>
+      </form>
+      <div style="text-align:center;margin-top:16px;">
+        <span style="font-size:12px;color:rgba(255,255,255,0.3);cursor:pointer;" onclick="hideAdminArea()">← Voltar ao App</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="admin-panel" id="adminPanelScreen">
+    <div class="adm-hdr">
+      <div class="adm-title"><i class="fas fa-shield-alt"></i> Painel Admin</div>
+      <button class="adm-logout" onclick="adminLogout()"><i class="fas fa-sign-out-alt"></i> Sair</button>
+    </div>
+    <div class="adm-stats-row">
+      <div class="adm-stat"><div class="adm-stat-icon">🛒</div><div class="adm-stat-val" id="adm-total-prod">0</div><div class="adm-stat-lbl">Produtos</div></div>
+      <div class="adm-stat"><div class="adm-stat-icon">👥</div><div class="adm-stat-val" id="adm-total-users">1</div><div class="adm-stat-lbl">Utilizadores</div></div>
+      <div class="adm-stat"><div class="adm-stat-icon">💳</div><div class="adm-stat-val" id="adm-pay-pending">0</div><div class="adm-stat-lbl">Pag. Pendentes</div></div>
+      <div class="adm-stat"><div class="adm-stat-icon">💬</div><div class="adm-stat-val" id="adm-msgs-count">2</div><div class="adm-stat-lbl">Mensagens</div></div>
+    </div>
+    <div class="adm-tabs-wrap">
+      <div class="adm-tabs">
+        <button class="adm-tab active" onclick="admTab('publish',this)"><i class="fas fa-plus-circle"></i> Publicar</button>
+        <button class="adm-tab" onclick="admTab('products',this)"><i class="fas fa-boxes"></i> Produtos</button>
+        <button class="adm-tab" id="admTabPayments" onclick="admTab('payments',this)"><i class="fas fa-file-invoice-dollar"></i> Pagamentos</button>
+        <button class="adm-tab" onclick="admTab('users',this)"><i class="fas fa-users"></i> Utilizadores</button>
+        <button class="adm-tab" onclick="admTab('messages',this)"><i class="fas fa-envelope"></i> Mensagens</button>
+        <button class="adm-tab" onclick="admTab('settings',this)"><i class="fas fa-cog"></i> Config</button>
+      </div>
+    </div>
+    <div class="adm-content" id="admContent"></div>
+  </div>
+
+  <div class="admin-chat" id="adminToUserChat" style="z-index:800;">
+    <div class="adm-chat-hdr">
+      <button class="adm-chat-back" onclick="closeAdminToUserChat()"><i class="fas fa-arrow-left"></i></button>
+      <div class="adm-chat-av" id="chatWithUserAv">U</div>
+      <div class="adm-chat-info">
+        <div class="adm-chat-name" id="chatWithUserName">Utilizador</div>
+        <div class="adm-chat-status online">Online</div>
+      </div>
+    </div>
+    <div class="adm-chat-msgs" id="adminToUserMsgs"></div>
+    <div class="adm-chat-inp-row">
+      <input class="adm-chat-inp" id="adminToUserInp" placeholder="Responder…" onkeydown="if(event.key==='Enter')sendAdminReply()">
+      <button class="adm-chat-send" onclick="sendAdminReply()"><i class="fas fa-paper-plane"></i></button>
+    </div>
+  </div>
+</div>
+
+<!-- MODALS -->
+<div class="modal-ov" id="prodDetailModal">
+  <div class="modal" id="prodDetailContent"></div>
+</div>
+
+<div class="modal-ov" id="premiumModal">
+  <div class="modal">
+    <div class="modal-hdr">
+      <div><div class="modal-title">👑 Activar Premium</div><div style="font-size:12px;color:var(--gray2);margin-top:3px;">Acesso ilimitado a todos os preços</div></div>
+      <button class="modal-close" onclick="closeModal('premiumModal')"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="modal-body">
+      <div class="plan-card selected" onclick="selectPlan(this,'monthly')">
+        <div class="plan-pop">Mais Popular</div>
+        <div class="plan-hdr"><div class="plan-name">Mensal</div><div class="plan-price">8 <span>MZN/mês</span></div></div>
+        <ul class="plan-feats">
+          <li><i class="fas fa-check-circle"></i> Preços ilimitados</li>
+          <li><i class="fas fa-check-circle"></i> Alertas automáticos</li>
+          <li><i class="fas fa-check-circle"></i> IA Assistente</li>
+          <li><i class="fas fa-check-circle"></i> Sem anúncios</li>
+        </ul>
+      </div>
+      <div class="plan-card" onclick="selectPlan(this,'yearly')">
+        <div class="plan-pop" style="background:var(--acc);">Melhor Valor</div>
+        <div class="plan-hdr"><div class="plan-name">Anual <span style="font-size:11px;background:var(--p);color:white;padding:2px 7px;border-radius:10px;margin-left:5px;">Poupa 6 MZN</span></div><div class="plan-price">90 <span>MZN/ano</span></div></div>
+        <ul class="plan-feats">
+          <li><i class="fas fa-check-circle"></i> Tudo do Mensal</li>
+          <li><i class="fas fa-check-circle"></i> Prioridade no suporte</li>
+          <li><i class="fas fa-check-circle"></i> Relatórios mensais</li>
+        </ul>
+      </div>
+      <div style="font-size:11px;color:var(--gray2);text-align:center;margin-top:8px;">Pagamento seguro via M-Pesa ou e-Mola</div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-sec" onclick="closeModal('premiumModal')">Depois</button>
+      <button class="btn btn-primary" onclick="openModal('paymentModal');closeModal('premiumModal')"><i class="fas fa-crown"></i> Activar Agora</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-ov" id="paymentModal">
+  <div class="modal">
+    <div class="modal-hdr">
+      <div class="modal-title">💳 Pagamento Premium</div>
+      <button class="modal-close" onclick="closeModal('paymentModal')"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="modal-body">
+      <div id="payMethodDisplay">
+        <div class="mpesa-box" id="mpesaInfoBox">
+          <div style="font-size:12px;color:var(--gray2);margin-bottom:6px;" id="payMethodLabel">Transfira para M-Pesa</div>
+          <div class="mpesa-num" id="payNumber">844 260 391</div>
+          <div class="mpesa-owner" id="payOwner">Titular: Helton Vasco</div>
+          <div class="mpesa-amt" id="payAmt">8 MZN (Mensal)</div>
+        </div>
+      </div>
+      <p style="font-size:12px;color:var(--gray);margin-bottom:10px;">Seleciona o método de pagamento:</p>
+      <div class="pay-method selected" id="payMpesa" onclick="selPayMethod('mpesa',this)">
+        <div class="pay-ico">📱</div>
+        <div class="pay-info"><div class="pay-name">M-Pesa</div><div class="pay-desc">Vodacom — <strong>844 260 391</strong> · Helton Vasco</div></div>
+        <div class="pay-check"><i class="fas fa-check" style="font-size:11px;"></i></div>
+      </div>
+      <div class="pay-method" id="payMkesh" onclick="selPayMethod('mkesh',this)">
+        <div class="pay-ico">🔵</div>
+        <div class="pay-info"><div class="pay-name">M-Kesh</div><div class="pay-desc">Millennium BIM — <strong>820 035 574</strong> · Osvaldo Tempo</div></div>
+        <div class="pay-check"></div>
+      </div>
+      <div style="background:linear-gradient(135deg,#FFF8E1,#FFF3CD);border-radius:var(--rs);padding:12px;margin-top:14px;border-left:3px solid var(--warn);">
+        <div style="font-size:11px;font-weight:700;color:#F57C00;margin-bottom:4px;"><i class="fas fa-info-circle"></i> Como pagar:</div>
+        <div style="font-size:11px;color:var(--gray);line-height:1.6;">1. Abre a tua carteira móvel<br>2. Envia o valor para o número acima<br>3. Tira uma foto do comprovativo<br>4. Clica em "Enviar Comprovativo" abaixo</div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-sec" onclick="closeModal('paymentModal')">Cancelar</button>
+      <button class="btn btn-primary" onclick="openComprovanteModal()"><i class="fas fa-paper-plane"></i> Enviar Comprovativo</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-ov" id="comprovanteModal">
+  <div class="modal">
+    <div class="modal-hdr">
+      <div class="modal-title">📎 Enviar Comprovativo</div>
+      <button class="modal-close" onclick="closeModal('comprovanteModal')"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="modal-body">
+      <div style="background:var(--pl);border-radius:var(--rs);padding:14px;margin-bottom:14px;text-align:center;">
+        <div style="font-size:13px;font-weight:700;color:var(--p);margin-bottom:4px;">✅ Após pagar, envia o comprovativo</div>
+        <div style="font-size:11px;color:var(--gray);">O administrador vai verificar e activar o teu acesso Premium</div>
+      </div>
+      <div class="form-grp">
+        <label class="form-lbl">O teu Nome</label>
+        <input class="form-inp" id="compNome" placeholder="O teu nome completo" readonly>
+      </div>
+      <div class="form-grp">
+        <label class="form-lbl">O teu Número de Telefone</label>
+        <input class="form-inp" id="compTel" placeholder="+258 8X XXX XXXX" readonly>
+      </div>
+      <div class="form-grp">
+        <label class="form-lbl">Método de Pagamento Usado</label>
+        <input class="form-inp" id="compMetodo" placeholder="M-Pesa / M-Kesh" readonly>
+      </div>
+      <div class="form-grp">
+        <label class="form-lbl">Foto do Comprovativo</label>
+        <div class="img-upload-area" id="compUploadArea" style="padding:20px;">
+          <input type="file" accept="image/*" id="compFileInput" onchange="handleComprovanteUpload(this)">
+          <i class="fas fa-camera" style="font-size:28px;color:var(--gray2);display:block;margin-bottom:6px;"></i>
+          <p style="font-size:12px;color:var(--gray2);">Toca para carregar foto do comprovativo</p>
+        </div>
+        <img id="compPreview" style="display:none;width:100%;border-radius:var(--rs);margin-top:8px;max-height:180px;object-fit:contain;border:2px solid var(--p);">
+      </div>
+      <div class="form-grp">
+        <label class="form-lbl">Notas Adicionais (opcional)</label>
+        <input class="form-inp" id="compNotes" placeholder="Ex: Paguei às 14h de hoje...">
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-sec" onclick="closeModal('comprovanteModal')">Cancelar</button>
+      <button class="btn btn-primary" onclick="enviarComprovante()"><i class="fas fa-paper-plane"></i> Enviar para Admin</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-ov" id="locationModal">
+  <div class="modal">
+    <div class="modal-hdr">
+      <div class="modal-title"><i class="fas fa-map-marker-alt" style="color:var(--p);margin-right:6px;"></i>Selecionar Cidade</div>
+      <button class="modal-close" onclick="closeModal('locationModal')"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="modal-body">
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <div class="sug-item" onclick="setCity('Maputo')" style="border-radius:10px;border:1px solid var(--grayM);">📍 Maputo</div>
+        <div class="sug-item" onclick="setCity('Matola')" style="border-radius:10px;border:1px solid var(--grayM);">📍 Matola</div>
+        <div class="sug-item" onclick="setCity('Beira')" style="border-radius:10px;border:1px solid var(--grayM);">📍 Beira</div>
+        <div class="sug-item" onclick="setCity('Nampula')" style="border-radius:10px;border:1px solid var(--grayM);">📍 Nampula</div>
+        <div class="sug-item" onclick="setCity('Tete')" style="border-radius:10px;border:1px solid var(--grayM);">📍 Tete</div>
+        <div class="sug-item" onclick="setCity('Inhambane')" style="border-radius:10px;border:1px solid var(--grayM);">📍 Inhambane</div>
+        <div class="sug-item" onclick="setCity('Quelimane')" style="border-radius:10px;border:1px solid var(--grayM);">📍 Quelimane</div>
+        <div class="sug-item" onclick="setCity('Pemba')" style="border-radius:10px;border:1px solid var(--grayM);">📍 Pemba</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-ov" id="alertModal">
+  <div class="modal">
+    <div class="modal-hdr">
+      <div class="modal-title"><i class="fas fa-bell" style="color:var(--p);margin-right:6px;"></i>Alerta de Preço</div>
+      <button class="modal-close" onclick="closeModal('alertModal')"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="modal-body">
+      <div class="form-grp">
+        <label class="form-lbl">Produto</label>
+        <input class="form-inp" id="modalAlertProd" placeholder="Nome do produto">
+      </div>
+      <div class="form-grp">
+        <label class="form-lbl">Preço máximo (MZN)</label>
+        <input class="form-inp" type="number" id="modalAlertPrice" placeholder="Ex: 200">
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-sec" onclick="closeModal('alertModal')">Cancelar</button>
+      <button class="btn btn-primary" onclick="createAlertFromModal()"><i class="fas fa-bell"></i> Criar</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-ov" id="notifModal">
+  <div class="modal">
+    <div class="modal-hdr">
+      <div class="modal-title">🔔 Notificações</div>
+      <button class="modal-close" onclick="closeModal('notifModal')"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="modal-body">
+      <div class="alert-card" onclick="installApp();closeModal('notifModal')" style="border:2px solid rgba(0,200,83,0.3);background:linear-gradient(135deg,#E8F5E9,#F1F8E9);cursor:pointer;">
+        <div class="alert-ico" style="background:linear-gradient(135deg,var(--p),var(--pd));color:white;"><i class="fas fa-mobile-alt"></i></div>
+        <div class="alert-body">
+          <div class="alert-prod" style="color:var(--p);">📲 Instala o PRECYÁ no teu celular!</div>
+          <div class="alert-meta">Acesso rápido, funciona offline. Toca para instalar →</div>
+        </div>
+        <div class="alert-right"><span style="background:var(--p);color:white;font-size:10px;font-weight:700;padding:4px 10px;border-radius:20px;">Grátis</span></div>
+      </div>
+      <div class="alert-card"><div class="alert-ico"><i class="fas fa-tags"></i></div><div class="alert-body"><div class="alert-prod">Arroz 5kg</div><div class="alert-meta">Baixou para 185 MZN no Mercado Central</div></div><div class="alert-right"><div class="alert-price">185 MZN</div><div class="alert-chg down">-12%</div></div></div>
+      <div class="alert-card"><div class="alert-ico"><i class="fas fa-fire" style="color:var(--sec);"></i></div><div class="alert-body"><div class="alert-prod">Oferta do dia!</div><div class="alert-meta">Óleo de cozinha com 20% de desconto</div></div><div class="alert-right"><div class="alert-price">90 MZN</div><div class="alert-chg down">-20%</div></div></div>
+      <div class="alert-card"><div class="alert-ico up"><i class="fas fa-arrow-up"></i></div><div class="alert-body"><div class="alert-prod">Açúcar 2kg</div><div class="alert-meta">Subiu de preço no Shoprite</div></div><div class="alert-right"><div class="alert-price">135 MZN</div><div class="alert-chg up">+8%</div></div></div>
+      <div class="alert-card" onclick="openModal('premiumModal');closeModal('notifModal')" style="border:2px solid rgba(255,193,7,0.4);background:linear-gradient(135deg,#FFF8E1,#FFF3CD);cursor:pointer;">
+        <div class="alert-ico" style="background:linear-gradient(135deg,#FFC400,#FF8F00);color:white;"><i class="fas fa-crown"></i></div>
+        <div class="alert-body">
+          <div class="alert-prod" style="color:#F57C00;">👑 VIP por apenas 8 MZN/mês!</div>
+          <div class="alert-meta">Preços ilimitados, alertas e IA. Toca para activar →</div>
+        </div>
+        <div class="alert-right"><span style="background:var(--warn);color:white;font-size:10px;font-weight:700;padding:4px 10px;border-radius:20px;">VIP</span></div>
+      </div>
+    </div>
+    <div class="modal-footer"><button class="btn btn-primary btn-full" onclick="closeModal('notifModal')">Fechar</button></div>
+  </div>
+</div>
+
+<div class="install-banner" id="installBanner">
+  <div class="install-banner-ico">📱</div>
+  <div class="install-banner-text">
+    <h4>Instala o PRECYÁ no teu celular!</h4>
+    <p>Acesso rápido, funciona offline e sem ocupar espaço.</p>
+  </div>
+  <div class="install-banner-btns">
+    <button class="install-btn-yes" onclick="installApp()"><i class="fas fa-download"></i> Instalar</button>
+    <button class="install-btn-no" onclick="dismissInstall()"><i class="fas fa-times"></i></button>
+  </div>
+</div>
+
+<div class="modal-ov" id="installModal">
+  <div class="modal">
+    <div class="modal-hdr">
+      <div><div class="modal-title">📱 Instalar PRECYÁ PRO</div><div style="font-size:12px;color:var(--gray2);margin-top:3px;">Adiciona ao ecrã inicial do teu celular</div></div>
+      <button class="modal-close" onclick="closeModal('installModal')"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="modal-body">
+      <div style="background:linear-gradient(135deg,var(--pl),#C8E6C9);border-radius:var(--rs);padding:20px;text-align:center;margin-bottom:16px;">
+        <div style="font-size:60px;margin-bottom:10px;">📲</div>
+        <div style="font-size:15px;font-weight:700;color:var(--dark);margin-bottom:6px;">PRECYÁ PRO no teu celular</div>
+        <div style="font-size:12px;color:var(--gray);line-height:1.6;">Instala como app nativa — rápido, leve e sempre disponível!</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div style="display:flex;align-items:center;gap:12px;padding:12px;background:var(--grayL);border-radius:10px;">
+          <div style="width:36px;height:36px;background:var(--pl);border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--p);font-size:16px;"><i class="fab fa-android"></i></div>
+          <div><div style="font-size:13px;font-weight:600;color:var(--dark);">Android (Chrome)</div><div style="font-size:11px;color:var(--gray2);">Menu ⋮ → "Adicionar à tela inicial"</div></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;padding:12px;background:var(--grayL);border-radius:10px;">
+          <div style="width:36px;height:36px;background:#E3F2FD;border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--acc);font-size:16px;"><i class="fab fa-apple"></i></div>
+          <div><div style="font-size:13px;font-weight:600;color:var(--dark);">iPhone (Safari)</div><div style="font-size:11px;color:var(--gray2);">Botão Partilhar → "Adicionar ao ecrã"</div></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;padding:12px;background:var(--grayL);border-radius:10px;">
+          <div style="width:36px;height:36px;background:#FFF8E1;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#F57C00;font-size:16px;"><i class="fas fa-bolt"></i></div>
+          <div><div style="font-size:13px;font-weight:600;color:var(--dark);">Benefícios</div><div style="font-size:11px;color:var(--gray2);">Ícone no ecrã, carregamento rápido, sem anúncios</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-sec" onclick="closeModal('installModal')">Fechar</button>
+      <button class="btn btn-primary" onclick="triggerNativeInstall()"><i class="fas fa-download"></i> Instalar Agora</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"><i class="fas fa-check-circle"></i><span id="toastTxt"></span></div>
+
+<script>
+// ===========================
+//  DATA STORE (localStorage)
+// ===========================
+const STORE_KEY    = 'precya_products_v3';
+const ALERTS_KEY   = 'precya_alerts_v3';
+const CITY_KEY     = 'precya_city';
+const CHAT_KEY     = 'precya_chat_v3';
+const USER_KEY     = 'precya_user_v1';
+const PAY_REQ_KEY  = 'precya_pay_requests_v1';
+const FAV_KEY      = 'precya_favorites_v1';
+
+function getProducts(){try{return JSON.parse(localStorage.getItem(STORE_KEY)||'[]');}catch{return [];}}
+function saveProducts(p){localStorage.setItem(STORE_KEY,JSON.stringify(p));}
+function getAlerts(){try{return JSON.parse(localStorage.getItem(ALERTS_KEY)||'[]');}catch{return [];}}
+function saveAlerts(a){localStorage.setItem(ALERTS_KEY,JSON.stringify(a));}
+function getCity(){return localStorage.getItem(CITY_KEY)||'Maputo';}
+function saveCity(c){localStorage.setItem(CITY_KEY,c);}
+function getChat(){try{return JSON.parse(localStorage.getItem(CHAT_KEY)||'[]');}catch{return [];}}
+function saveChat(m){localStorage.setItem(CHAT_KEY,JSON.stringify(m));}
+function getUser(){try{return JSON.parse(localStorage.getItem(USER_KEY)||'null');}catch{return null;}}
+function saveUser(u){localStorage.setItem(USER_KEY,JSON.stringify(u));}
+function getPayRequests(){try{return JSON.parse(localStorage.getItem(PAY_REQ_KEY)||'[]');}catch{return [];}}
+function savePayRequests(r){localStorage.setItem(PAY_REQ_KEY,JSON.stringify(r));}
+function getFavorites(){try{return JSON.parse(localStorage.getItem(FAV_KEY)||'[]');}catch{return [];}}
+function saveFavorites(f){localStorage.setItem(FAV_KEY,JSON.stringify(f));}
+
+function userHasAccess(){
+  const u=getUser();
+  if(!u) return false;
+  if(u.premium) return true;
+  const elapsed=Date.now()-u.registeredAt;
+  return elapsed < 24*60*60*1000;
+}
+
+function trialRemainingMs(){
+  const u=getUser();
+  if(!u) return 0;
+  const elapsed=Date.now()-u.registeredAt;
+  const remaining=24*60*60*1000-elapsed;
+  return Math.max(0,remaining);
+}
+
+function seedDemo(){
+  if(getProducts().length>0) return;
+  const demo=[
+    {id:1,name:'Arroz Importado 5kg',cat:'food',price:185,priceHigh:220,location:'Mercado Central, Maputo',description:'Arroz de alta qualidade, grão longo, importado.',emoji:'🍚',image:'',type:'vende',published:true,hot:true,date:Date.now(),rating:4.5,reviews:12},
+    {id:2,name:'Óleo de Cozinha 1L',cat:'food',price:90,priceHigh:115,location:'Mini-Mercado Xipamanine',description:'Óleo de girassol refinado, qualidade premium.',emoji:'🫙',image:'',type:'vende',published:true,hot:false,date:Date.now()-3600000,rating:4.2,reviews:8},
+    {id:3,name:'Açúcar Branco 2kg',cat:'food',price:118,priceHigh:135,location:'Mercado 25 de Junho',description:'Açúcar refinado branco de cana.',emoji:'🍬',image:'',type:'vende',published:true,hot:false,date:Date.now()-7200000,rating:4.0,reviews:5},
+    {id:4,name:'Sabonete Nivea 90g',cat:'hygiene',price:42,priceHigh:52,location:'Farmácia Polana',description:'Sabonete hidratante com creme Nivea.',emoji:'🧼',image:'',type:'vende',published:true,hot:false,date:Date.now()-10800000,rating:4.8,reviews:20},
+    {id:5,name:'Coca-Cola 2L',cat:'drink',price:72,priceHigh:85,location:'Mercado Central',description:'Refrigerante original Coca-Cola 2 litros.',emoji:'🥤',image:'',type:'vende',published:true,hot:true,date:Date.now()-14400000,rating:4.3,reviews:15},
+    {id:6,name:'Pão Francês',cat:'food',price:5,priceHigh:8,location:'Padaria Central',description:'Pão fresco assado de manhã.',emoji:'🥖',image:'',type:'vende',published:true,hot:false,date:Date.now()-18000000,rating:4.1,reviews:30},
+    {id:7,name:'Corte de Cabelo',cat:'service',price:150,priceHigh:200,location:'Barbearia Polana',description:'Corte masculino profissional com acabamento.',emoji:'✂️',image:'',type:'servico',published:true,hot:false,date:Date.now()-21600000,rating:4.6,reviews:10},
+    {id:8,name:'Detergente Omo 500g',cat:'clean',price:65,priceHigh:78,location:'Shoprite Maputo',description:'Detergente em pó Omo com aroma floral.',emoji:'🧺',image:'',type:'vende',published:true,hot:false,date:Date.now()-25200000,rating:4.4,reviews:7},
+  ];
+  saveProducts(demo);
+}
+
+// ===========================
+//  INIT
+// ===========================
+let currentCity=getCity();
+let searchTimer=null;
+let aiHistory=[];
+let currentFilter='all';
+let currentPage='home';
+
+window.addEventListener('DOMContentLoaded',()=>{
+  seedDemo();
+  setTimeout(()=>{
+    document.getElementById('splash').classList.add('out');
+    setTimeout(()=>{
+      document.getElementById('splash').style.display='none';
+      const u=getUser();
+      if(!u){
+        showRegisterScreen();
+      } else if(!userHasAccess()){
+        showAccessBlocked();
+      } else if(!localStorage.getItem('precya_onb_done')){
+        document.getElementById('onboarding').classList.add('active');
+      } else {
+        showMainApp();
+      }
+    },700);
+  },3000);
+});
+
+function showRegisterScreen(){
+  document.getElementById('registerScreen').style.display='flex';
+  document.getElementById('app').style.display='none';
+  document.getElementById('accessBlockedScreen').classList.remove('show');
+}
+
+function doRegister(){
+  const nome=document.getElementById('regNome').value.trim();
+  const tel=document.getElementById('regTel').value.trim();
+  if(!nome){showToastGlobal('❌ Insere o teu nome completo','error');return;}
+  if(!tel||tel.length<8){showToastGlobal('❌ Insere um número de telefone válido','error');return;}
+  const u={nome,tel,registeredAt:Date.now(),premium:false};
+  saveUser(u);
+  document.getElementById('registerScreen').style.display='none';
+  if(!localStorage.getItem('precya_onb_done')){
+    document.getElementById('onboarding').classList.add('active');
+  } else {
+    showMainApp();
+  }
+  showToastGlobal('🎉 Bem-vindo, '+nome+'! Tens 24h grátis!','success');
+}
+
+function showAccessBlocked(){
+  document.getElementById('accessBlockedScreen').classList.add('show');
+  document.getElementById('app').style.display='none';
+  document.getElementById('registerScreen').style.display='none';
+}
+
+function showToastGlobal(msg,type){
+  let t=document.getElementById('toastGlobal');
+  if(!t){
+    t=document.createElement('div');
+    t.id='toastGlobal';
+    t.style.cssText='position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:#1F2937;color:white;padding:11px 20px;border-radius:22px;font-size:13px;font-weight:500;white-space:nowrap;z-index:99999;opacity:0;transition:all 0.3s ease;display:flex;align-items:center;gap:8px;box-shadow:0 8px 24px rgba(0,0,0,0.3);font-family:Poppins,sans-serif;';
+    document.body.appendChild(t);
+  }
+  t.innerHTML=(type==='error'?'<i class="fas fa-exclamation-circle" style="color:#FF1744"></i>':'<i class="fas fa-check-circle" style="color:#00C853"></i>')+' <span>'+msg+'</span>';
+  t.style.opacity='1';t.style.transform='translateX(-50%) translateY(0)';
+  clearTimeout(t._timer);
+  t._timer=setTimeout(()=>{t.style.opacity='0';t.style.transform='translateX(-50%) translateY(20px)';},3500);
+}
+
+function updateStatusPill(){
+  const u=getUser();
+  if(!u) return;
+  const pill=document.getElementById('statusPill');
+  if(!pill) return;
+  if(u.premium){
+    pill.className='status-pill premium';
+    pill.innerHTML='<i class="fas fa-crown"></i><span>👑 Premium ativo — Acesso ilimitado!</span>';
+  } else {
+    const rem=trialRemainingMs();
+    if(rem>0){
+      const h=Math.floor(rem/3600000);
+      const m=Math.floor((rem%3600000)/60000);
+      pill.className='status-pill trial';
+      pill.innerHTML='<i class="fas fa-clock"></i><span>⏳ Teste grátis: '+h+'h '+m+'m restantes</span>';
+    } else {
+      pill.className='status-pill locked';
+      pill.innerHTML='<i class="fas fa-lock"></i><span>🔒 Período gratuito expirou — Activa Premium</span>';
+    }
+  }
+}
+
+setInterval(()=>{
+  if(document.getElementById('app').style.display!=='none'){
+    if(!userHasAccess()){
+      showAccessBlocked();
+    } else {
+      updateStatusPill();
+    }
+  }
+},60000);
+
+function showMainApp(){
+  document.getElementById('registerScreen').style.display='none';
+  document.getElementById('accessBlockedScreen').classList.remove('show');
+  document.getElementById('app').style.display='flex';
+  const u=getUser();
+  if(u){
+    document.getElementById('profName').textContent=u.nome||'Utilizador PRECYÁ';
+    document.getElementById('profPhone').textContent=u.tel||'+258 84 000 0000';
+    const cn=document.getElementById('compNome');
+    const ct=document.getElementById('compTel');
+    if(cn) cn.value=u.nome||'';
+    if(ct) ct.value=u.tel||'';
+  }
+  updateCityUI(currentCity);
+  updateStatusPill();
+  renderHome();
+  renderAlerts();
+  updateAlertBadge();
+  loadChatMessages();
+  setTimeout(()=>{
+    document.getElementById('fabAi').style.display='flex';
+  },1000);
+}
+
+// ===========================
+//  ONBOARDING
+// ===========================
+let onbCurrent=0;
+const ONB_TOTAL=5;
+
+function nextOnbSlide(){
+  const slides=document.querySelectorAll('.onb-slide');
+  const dots=document.querySelectorAll('.onb-dot');
+  if(onbCurrent<ONB_TOTAL-1){
+    slides[onbCurrent].classList.remove('active');
+    slides[onbCurrent].classList.add('out');
+    onbCurrent++;
+    setTimeout(()=>slides[onbCurrent-1].classList.remove('out'),400);
+    slides[onbCurrent].classList.add('active');
+    dots.forEach((d,i)=>d.classList.toggle('active',i===onbCurrent));
+    if(onbCurrent===ONB_TOTAL-1){
+      document.querySelector('.onb-btn-next').innerHTML='Começar <i class="fas fa-rocket"></i>';
+    }
+  } else {
+    skipOnboarding();
+  }
+}
+
+function skipOnboarding(){
+  localStorage.setItem('precya_onb_done','1');
+  document.getElementById('onboarding').classList.remove('active');
+  const u=getUser();
+  if(u){
+    const approvals=JSON.parse(localStorage.getItem('precya_approvals')||'[]');
+    const found=approvals.find(a=>a.tel===u.tel&&a.approved);
+    if(found&&!u.premium){
+      u.premium=true;
+      saveUser(u);
+    }
+  }
+  showMainApp();
+}
+
+function openOnboarding(){
+  onbCurrent=0;
+  document.querySelectorAll('.onb-slide').forEach((s,i)=>{s.classList.toggle('active',i===0);s.classList.remove('out');});
+  document.querySelectorAll('.onb-dot').forEach((d,i)=>d.classList.toggle('active',i===0));
+  document.querySelector('.onb-btn-next').innerHTML='Próximo <i class="fas fa-arrow-right"></i>';
+  document.getElementById('onboarding').classList.add('active');
+}
+
+// ===========================
+//  NAVIGATION
+// ===========================
+function showPage(name){
+  currentPage=name;
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById('page-'+name)?.classList.add('active');
+  document.querySelectorAll('.nv').forEach(n=>n.classList.remove('active'));
+  document.getElementById('nv-'+name)?.classList.add('active');
+  closeAllChats();
+  if(name==='home') renderHome();
+  if(name==='alerts'){renderAlerts();updateAlertBadge();}
+  if(name==='search'){document.getElementById('searchPageInp').focus();}
+}
+
+function updateCityUI(city){
+  document.getElementById('currentCity').textContent=city;
+  document.getElementById('profCity').textContent=city;
+  document.getElementById('stat-city').textContent=city.substring(0,3).toUpperCase();
+}
+
+function setCity(city){
+  currentCity=city;
+  saveCity(city);
+  updateCityUI(city);
+  closeModal('locationModal');
+  showToast('📍 Localização: '+city,'success');
+  renderHome();
+}
+
+// ===========================
+//  RENDER HOME
+// ===========================
+function renderHome(){
+  const prods=getProducts().filter(p=>p.published);
+  document.getElementById('homeLoading').classList.remove('show');
+  document.getElementById('stat-products').textContent=prods.length;
+  const stores=[...new Set(prods.map(p=>p.location))].length;
+  document.getElementById('stat-stores').textContent=stores;
+
+  const hot=prods.filter(p=>p.hot||calcDisc(p)>=15);
+  const dealsEl=document.getElementById('dealsScroll');
+  if(hot.length===0){dealsEl.innerHTML='<div style="padding:20px;color:var(--gray2);font-size:13px;">Sem ofertas de momento</div>';}
+  else{dealsEl.innerHTML=hot.map(p=>dealCardHTML(p)).join('');}
+
+  let filtered=prods;
+  if(currentFilter!=='all') filtered=prods.filter(p=>p.cat===currentFilter);
+  document.getElementById('prodCount').textContent=filtered.length+' produtos';
+
+  const grid=document.getElementById('prodGrid');
+  if(filtered.length===0){
+    grid.innerHTML='';
+    document.getElementById('homeEmpty').style.display='block';
+  } else {
+    document.getElementById('homeEmpty').style.display='none';
+    grid.innerHTML=filtered.map(p=>prodCardHTML(p)).join('');
+  }
+  updateFavButtons();
+}
+
+function calcDisc(p){
+  if(!p.priceHigh||p.priceHigh<=p.price) return 0;
+  return Math.round((p.priceHigh-p.price)/p.priceHigh*100);
+}
+
+function dealCardHTML(p){
+  const disc=calcDisc(p);
+  const imgContent=p.image?`<img src="${p.image}" style="width:100%;height:100%;object-fit:cover;">`:`<div class="deal-img-ph deal-img">${p.emoji||'🏷️'}</div>`;
+  return`<div class="deal-card" onclick="openProduct(${p.id})">
+    <div class="deal-img">${imgContent}${disc>0?`<div class="deal-badge">-${disc}%</div>`:''}</div>
+    <div class="deal-body">
+      <div class="deal-name">${p.name}</div>
+      <div class="deal-loc"><i class="fas fa-map-marker-alt"></i>${p.location}</div>
+      <div class="deal-prices"><div class="deal-low">${p.price} MZN</div>${p.priceHigh?`<div class="deal-high">${p.priceHigh} MZN</div>`:''}</div>
+    </div>
+  </div>`;
+}
+
+function prodCardHTML(p){
+  const disc=calcDisc(p);
+  const typeClass={'vende':'vende','compra':'compra','servico':'servico'}[p.type]||'vende';
+  const typeLabel={'vende':'Vende','compra':'Compra','servico':'Serviço'}[p.type]||'Vende';
+  const imgContent=p.image?`<img class="prod-img" src="${p.image}" alt="${p.name}">`:`<div class="prod-img-placeholder ${p.cat||'food'}">${p.emoji||'🏷️'}</div>`;
+  const favs=getFavorites();
+  const isFav=favs.includes(p.id);
+  const stars=getStarRating(p.rating||4.0);
+  return`<div class="prod-card" onclick="openProduct(${p.id})">
+    <div class="prod-img-wrap">
+      ${imgContent}
+      ${disc>0?`<div class="prod-disc-badge">-${disc}%</div>`:''}
+      ${p.hot?`<div class="prod-hot-badge">🔥 HOT</div>`:''}
+      <button class="prod-fav ${isFav?'active':''}" onclick="toggleFav(event,${p.id})" id="fav-${p.id}"><i class="fas fa-heart"></i></button>
+    </div>
+    <div class="prod-body">
+      <div class="prod-name">${p.name}</div>
+      <div class="prod-loc"><i class="fas fa-map-marker-alt"></i>${p.location}</div>
+      <div class="prod-price-row">
+        <div class="prod-price-low">${p.price} MZN</div>
+        ${p.priceHigh?`<div class="prod-price-high">${p.priceHigh} MZN</div>`:''}
+      </div>
+      <div class="prod-action">
+        <div class="prod-tag ${typeClass}">${typeLabel}</div>
+        <div class="prod-rating">${stars}<span>(${p.reviews||0})</span></div>
+      </div>
+    </div>
+  </div>`;
+}
+
+function getStarRating(rating){
+  let stars='';
+  for(let i=1;i<=5;i++){
+    if(i<=Math.floor(rating)) stars+='<i class="fas fa-star"></i>';
+    else if(i===Math.ceil(rating)&&!Number.isInteger(rating)) stars+='<i class="fas fa-star-half-alt"></i>';
+    else stars+='<i class="far fa-star"></i>';
+  }
+  return stars;
+}
+
+function updateFavButtons(){
+  const favs=getFavorites();
+  favs.forEach(id=>{
+    const btn=document.getElementById('fav-'+id);
+    if(btn) btn.classList.add('active');
+  });
+}
+
+function filterCat(cat,el){
+  currentFilter=cat;
+  document.querySelectorAll('.cat-chip').forEach(c=>c.classList.remove('active'));
+  el.classList.add('active');
+  renderHome();
+}
+
+function toggleFav(e,id){
+  e.stopPropagation();
+  const btn=document.getElementById('fav-'+id);
+  const favs=getFavorites();
+  const idx=favs.indexOf(id);
+  if(idx>-1){
+    favs.splice(idx,1);
+    btn.classList.remove('active');
+    showToast('💔 Removido dos favoritos','success');
+  } else {
+    favs.push(id);
+    btn.classList.add('active');
+    showToast('❤️ Adicionado aos favoritos!','success');
+  }
+  saveFavorites(favs);
+}
+
+// ===========================
+//  PRODUCT DETAIL
+// ===========================
+function openProduct(id){
+  const p=getProducts().find(x=>x.id===id);
+  if(!p) return;
+  const disc=calcDisc(p);
+  const imgContent=p.image?`<img src="${p.image}" style="width:100%;height:100%;object-fit:cover;">`:`<div class="pd-image-hero-ph ${p.cat||'food'}">${p.emoji||'🏷️'}</div>`;
+  const stars=getStarRating(p.rating||4.0);
+  const html=`
+    <div class="pd-back" onclick="closeModal('prodDetailModal')"><i class="fas fa-arrow-left"></i> Voltar</div>
+    <div class="pd-image-hero">${imgContent}${disc>0?`<div class="prod-disc-badge" style="position:absolute;top:12px;left:12px;font-size:13px;">-${disc}%</div>`:''}</div>
+    <div class="pd-content">
+      <div class="pd-header-info">
+        <div class="pd-title">${p.name}</div>
+        <div class="pd-cat-tag">${catLabel(p.cat)}</div>
+      </div>
+      <div class="pd-loc-info"><i class="fas fa-map-marker-alt" style="color:var(--p);"></i>${p.location}</div>
+      <div style="display:flex;align-items:center;gap:4px;margin-bottom:8px;font-size:12px;color:var(--warn);">${stars}<span style="color:var(--gray2);">(${p.reviews||0} avaliações)</span></div>
+      ${p.description?`<div class="pd-desc"><i class="fas fa-info-circle" style="color:var(--p);margin-right:6px;"></i>${p.description}</div>`:''}
+      <div class="pd-prices-box">
+        <table><thead><tr><th>Local</th><th>Preço Normal</th><th>Preço PRECYÁ</th><th>Desconto</th></tr></thead>
+        <tbody>
+          <tr><td><strong>${p.location}</strong></td><td style="color:var(--gray2);text-decoration:line-through;">${p.priceHigh||'-'} MZN</td><td style="color:var(--p);font-weight:800;font-size:16px;">${p.price} MZN</td><td><span style="background:var(--pl);color:var(--p);padding:3px 8px;border-radius:10px;font-size:11px;font-weight:700;">${disc>0?'-'+disc+'%':'—'}</span></td></tr>
+        </tbody></table>
+      </div>
+      <div class="pd-btn-row">
+        <button class="pd-btn pd-btn-primary" onclick="shareProduct(${p.id})"><i class="fas fa-share-alt"></i> Partilhar</button>
+        <button class="pd-btn pd-btn-outline" style="border:2px solid var(--p);" onclick="createAlertForProduct('${p.name}',${p.price});closeModal('prodDetailModal')"><i class="fas fa-bell"></i> Alerta</button>
+      </div>
+    </div>`;
+  document.getElementById('prodDetailContent').innerHTML=html;
+  openModal('prodDetailModal');
+}
+
+function shareProduct(id){
+  const p=getProducts().find(x=>x.id===id);
+  if(!p) return;
+  const text=`🔥 ${p.name} por apenas ${p.price} MZN em ${p.location}! Encontra no PRECYÁ PRO 📲`;
+  if(navigator.share){
+    navigator.share({title:p.name,text:text,url:window.location.href}).catch(()=>{});
+  } else {
+    navigator.clipboard.writeText(text).then(()=>showToast('📋 Link copiado!','success'));
+  }
+}
+
+function catLabel(c){
+  const m={food:'Alimentação',drink:'Bebidas',hygiene:'Higiene',service:'Serviços',clean:'Limpeza',transport:'Transporte'};
+  return m[c]||'Geral';
+}
+
+function createAlertForProduct(name,price){
+  const alerts=getAlerts();
+  alerts.unshift({id:Date.now(),product:name,price:price,store:'',created:Date.now()});
+  saveAlerts(alerts);
+  updateAlertBadge();
+  showToast('🔔 Alerta criado para '+name,'success');
+}
+
+// ===========================
+//  SEARCH
+// ===========================
+let searchFilter='all';
+function setFilter(f,el){
+  searchFilter=f;
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  el.classList.add('active');
+  const v=document.getElementById('searchPageInp').value;
+  if(v) doSearch(v);
+}
+
+function doSearch(q){
+  const list=document.getElementById('searchResultsList');
+  const empty=document.getElementById('searchEmpty');
+  const ph=document.getElementById('searchPlaceholder');
+  const loading=document.getElementById('searchLoading');
+  if(!q||q.length<2){list.classList.remove('active');empty.style.display='none';ph.style.display='block';return;}
+  ph.style.display='none';
+  loading.classList.add('show');
+  clearTimeout(searchTimer);
+  searchTimer=setTimeout(()=>{
+    loading.classList.remove('show');
+    let prods=getProducts().filter(p=>p.published&&p.name.toLowerCase().includes(q.toLowerCase()));
+    if(searchFilter!=='all') prods=prods.filter(p=>p.cat===searchFilter);
+    if(prods.length===0){list.classList.remove('active');empty.style.display='block';return;}
+    empty.style.display='none';
+    list.innerHTML=prods.map(p=>{
+      const disc=calcDisc(p);
+      const imgContent=p.image?`<img src="${p.image}" style="width:36px;height:36px;border-radius:8px;object-fit:cover;">`:`<div class="store-ico">${p.emoji||'🏷️'}</div>`;
+      return`<div class="result-card" onclick="openProduct(${p.id})">
+        <div class="result-hdr">
+          <div class="result-name">${p.name}</div>
+          <div class="result-cat-tag">${catLabel(p.cat)}</div>
+        </div>
+        <div class="store-row">
+          <div class="store-left">${imgContent}<div class="store-info"><div class="store-name">${p.location}</div><div class="store-loc"><i class="fas fa-map-marker-alt"></i>${currentCity}</div></div></div>
+          <div class="store-price">${p.price} MZN</div>
+        </div>
+        ${disc>0?`<div class="result-best"><div class="result-best-lbl"><i class="fas fa-trophy"></i> Melhor preço</div><div class="result-best-txt">Poupa ${p.priceHigh-p.price} MZN vs preço normal (${p.priceHigh} MZN) — desconto de ${disc}%</div></div>`:''}
+      </div>`;
+    }).join('');
+    list.classList.add('active');
+  },400);
+}
+
+function handleSearch(v){
+  const drop=document.getElementById('searchDrop');
+  if(!v||v.length<2){drop.classList.remove('open');return;}
+  const prods=getProducts().filter(p=>p.published&&p.name.toLowerCase().includes(v.toLowerCase()));
+  if(!prods.length){drop.classList.remove('open');return;}
+  drop.innerHTML=prods.slice(0,5).map(p=>`<div class="sug-item" onclick="selectSug('${p.name}')"><i class="fas fa-search"></i><span>${p.name}</span></div>`).join('');
+  drop.classList.add('open');
+}
+
+function openSearch(){
+  const v=document.getElementById('searchInput').value;
+  if(v) handleSearch(v);
+}
+function closeSearchDelay(){setTimeout(()=>document.getElementById('searchDrop').classList.remove('open'),200);}
+function selectSug(s){
+  document.getElementById('searchInput').value=s;
+  document.getElementById('searchDrop').classList.remove('open');
+  showPage('search');
+  document.getElementById('searchPageInp').value=s;
+  doSearch(s);
+}
+
+// ===========================
+//  ALERTS
+// ===========================
+function createAlert(){
+  const prod=document.getElementById('alertProd').value.trim();
+  const price=document.getElementById('alertPrice').value;
+  const store=document.getElementById('alertStore').value;
+  if(!prod){showToast('Insere o nome do produto','error');return;}
+  const alerts=getAlerts();
+  alerts.unshift({id:Date.now(),product:prod,price:parseFloat(price)||0,store,created:Date.now()});
+  saveAlerts(alerts);
+  document.getElementById('alertProd').value='';
+  document.getElementById('alertPrice').value='';
+  renderAlerts();
+  updateAlertBadge();
+  showToast('🔔 Alerta criado com sucesso!','success');
+}
+
+function createAlertFromModal(){
+  const prod=document.getElementById('modalAlertProd').value.trim();
+  const price=document.getElementById('modalAlertPrice').value;
+  if(!prod){showToast('Insere o nome do produto','error');return;}
+  const alerts=getAlerts();
+  alerts.unshift({id:Date.now(),product:prod,price:parseFloat(price)||0,store:'',created:Date.now()});
+  saveAlerts(alerts);
+  updateAlertBadge();
+  closeModal('alertModal');
+  showToast('🔔 Alerta criado!','success');
+}
+
+function renderAlerts(){
+  const alerts=getAlerts();
+  const el=document.getElementById('alertsList');
+  if(!el) return;
+  if(alerts.length===0){el.innerHTML='<div class="empty"><i class="fas fa-bell-slash"></i><h3>Sem alertas</h3><p>Cria um alerta para ser notificado quando o preço baixar.</p></div>';return;}
+  el.innerHTML=alerts.map(a=>`
+    <div class="alert-card">
+      <div class="alert-ico"><i class="fas fa-tags"></i></div>
+      <div class="alert-body">
+        <div class="alert-prod">${a.product}</div>
+        <div class="alert-meta">Máx: ${a.price?a.price+' MZN':'Qualquer preço'}${a.store?' • '+a.store:''}</div>
+      </div>
+      <div class="alert-right">
+        <button onclick="deleteAlert(${a.id})" style="background:var(--danger);color:white;border:none;border-radius:8px;padding:6px 10px;cursor:pointer;font-size:11px;"><i class="fas fa-trash"></i></button>
+      </div>
+    </div>`).join('');
+}
+
+function deleteAlert(id){
+  const alerts=getAlerts().filter(a=>a.id!==id);
+  saveAlerts(alerts);
+  renderAlerts();
+  updateAlertBadge();
+}
+
+function updateAlertBadge(){
+  const c=getAlerts().length;
+  const badge=document.getElementById('alertBadge');
+  if(c>0){badge.textContent=c;badge.style.display='flex';}
+  else{badge.style.display='none';}
+}
+
+// ===========================
+//  ADMIN
+// ===========================
+const ADMIN_CREDS={user:'admin@gmail.com',pass:'200500/m'};
+let adminLoggedIn=false;
+
+function showAdminLogin(){
+  closeAllModals();
+  document.getElementById('adminArea').style.display='block';
+  document.getElementById('adminLoginScreen').style.display='flex';
+  document.getElementById('adminPanelScreen').classList.remove('active');
+}
+
+function hideAdminArea(){
+  document.getElementById('adminArea').style.display='none';
+  adminLoggedIn=false;
+}
+
+function adminLogin(){
+  const u=document.getElementById('adminUser').value;
+  const p=document.getElementById('adminPass').value;
+  if((u===ADMIN_CREDS.user||u==='admin')&&p===ADMIN_CREDS.pass){
+    adminLoggedIn=true;
+    document.getElementById('adminLoginScreen').style.display='none';
+    document.getElementById('adminPanelScreen').classList.add('active');
+    admTab('publish',document.querySelector('.adm-tab'));
+    showToast('✅ Bem-vindo, Administrador!','success');
+  } else {
+    showToast('❌ Credenciais incorrectas','error');
+    document.getElementById('adminPass').value='';
+  }
+}
+
+function adminLogout(){
+  adminLoggedIn=false;
+  document.getElementById('adminPanelScreen').classList.remove('active');
+  document.getElementById('adminLoginScreen').style.display='flex';
+  document.getElementById('adminUser').value='';
+  document.getElementById('adminPass').value='';
+}
+
+let currentEditId=null;
+
+function admTab(name,el){
+  document.querySelectorAll('.adm-tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.adm-tab').forEach(t=>{
+    if(t.getAttribute('onclick')&&t.getAttribute('onclick').includes("'"+name+"'")){t.classList.add('active');}
+  });
+  const content=document.getElementById('admContent');
+  document.getElementById('adm-total-prod').textContent=getProducts().length;
+  const pendPay=getPayRequests().filter(r=>r.status==='pendente').length;
+  const pendEl=document.getElementById('adm-pay-pending');
+  if(pendEl) pendEl.textContent=pendPay;
+  const usersEl=document.getElementById('adm-total-users');
+  if(usersEl) usersEl.textContent=getUser()?6:5;
+
+  const pendingCount=getPayRequests().filter(r=>r.status==='pendente').length;
+  const tabPay=document.getElementById('admTabPayments');
+  if(tabPay){
+    tabPay.innerHTML='<i class="fas fa-file-invoice-dollar"></i> Pagamentos'+(pendingCount>0?` <span style="background:var(--danger);color:white;font-size:9px;font-weight:700;padding:2px 6px;border-radius:10px;margin-left:4px;">${pendingCount}</span>`:'');
+  }
+  if(name==='publish'){
+    currentEditId=null;
+    content.innerHTML=publishFormHTML();
+    setupImgUpload();
+  }
+  else if(name==='products') content.innerHTML=renderAdminProducts();
+  else if(name==='payments') content.innerHTML=renderAdminPayments();
+  else if(name==='users') content.innerHTML=renderAdminUsers();
+  else if(name==='messages') content.innerHTML=renderAdminMessages();
+  else if(name==='settings') content.innerHTML=renderAdminSettings();
+}
+
+function publishFormHTML(edit=null){
+  const p=edit||{};
+  return`<div class="publish-form">
+    <h3><i class="fas fa-plus-circle"></i> ${edit?'Editar Produto':'Publicar Novo Produto'}</h3>
+    <div class="img-upload-area" id="imgUploadArea">
+      <input type="file" accept="image/*" id="imgFileInput" onchange="handleImgUpload(this)">
+      <i class="fas fa-camera"></i>
+      <p>Clica para adicionar foto real do produto</p>
+      <span>JPG, PNG ou WEBP • Máx 5MB</span>
+    </div>
+    <img id="imgPreview" class="${p.image?'active':''}" src="${p.image||''}" style="${p.image?'display:block':'display:none'}">
+    <div class="form-grp">
+      <label class="form-lbl">Nome do Produto / Serviço *</label>
+      <input class="form-inp" id="pubName" placeholder="Ex: Arroz Importado 5kg" value="${p.name||''}">
+    </div>
+    <div class="form-grp">
+      <label class="form-lbl">Categoria</label>
+      <select class="form-sel" id="pubCat">
+        <option value="food" ${p.cat==='food'?'selected':''}>🍽️ Alimentação</option>
+        <option value="drink" ${p.cat==='drink'?'selected':''}>🥤 Bebidas</option>
+        <option value="hygiene" ${p.cat==='hygiene'?'selected':''}>🧴 Higiene</option>
+        <option value="clean" ${p.cat==='clean'?'selected':''}>🧺 Limpeza</option>
+        <option value="service" ${p.cat==='service'?'selected':''}>🛎️ Serviços</option>
+        <option value="transport" ${p.cat==='transport'?'selected':''}>🚌 Transporte</option>
+      </select>
+    </div>
+    <div class="form-grp">
+      <label class="form-lbl">Tipo de Publicação</label>
+      <select class="form-sel" id="pubType">
+        <option value="vende" ${p.type==='vende'?'selected':''}>Vende</option>
+        <option value="compra" ${p.type==='compra'?'selected':''}>Compra</option>
+        <option value="servico" ${p.type==='servico'?'selected':''}>Serviço</option>
+      </select>
+    </div>
+    <div class="price-row">
+      <div class="form-grp">
+        <label class="form-lbl">💰 Preço Baixo (MZN) *</label>
+        <input class="form-inp" id="pubPriceLow" type="number" placeholder="Ex: 185" value="${p.price||''}">
+      </div>
+      <div class="form-grp">
+        <label class="form-lbl">📈 Preço Normal (MZN)</label>
+        <input class="form-inp" id="pubPriceHigh" type="number" placeholder="Ex: 220" value="${p.priceHigh||''}">
+      </div>
+    </div>
+    <div class="form-grp">
+      <label class="form-lbl">📍 Localização / Mercado *</label>
+      <input class="form-inp" id="pubLocation" placeholder="Ex: Mercado Central, Maputo" value="${p.location||''}">
+    </div>
+    <div class="form-grp">
+      <label class="form-lbl">📝 Descrição do Produto</label>
+      <textarea class="form-inp" id="pubDesc" rows="3" placeholder="Descreve o produto, qualidade, quantidade…" style="resize:none;">${p.description||''}</textarea>
+    </div>
+    <div class="form-grp">
+      <label class="form-lbl">Emoji (opcional)</label>
+      <input class="form-inp" id="pubEmoji" placeholder="Ex: 🍚" value="${p.emoji||''}" style="font-size:20px;">
+    </div>
+    <div class="form-grp">
+      <label class="form-lbl">⭐ Avaliação (0-5)</label>
+      <input class="form-inp" id="pubRating" type="number" min="0" max="5" step="0.1" placeholder="Ex: 4.5" value="${p.rating||''}">
+    </div>
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+      <input type="checkbox" id="pubHot" ${p.hot?'checked':''} style="width:18px;height:18px;accent-color:var(--p);">
+      <label for="pubHot" style="font-size:13px;font-weight:600;color:var(--dark);">🔥 Marcar como Oferta do Dia</label>
+    </div>
+    <button class="pub-btn" onclick="publishProduct()"><i class="fas fa-rocket"></i> ${edit?'Actualizar Produto':'Publicar Produto'}</button>
+    ${edit?`<button class="pub-btn" style="background:var(--grayM);color:var(--gray);margin-top:8px;" onclick="admTab('products',null)">Cancelar</button>`:''}
+  </div>`;
+}
+
+let pubImgData='';
+function setupImgUpload(){pubImgData='';}
+
+function handleImgUpload(input){
+  const file=input.files[0];
+  if(!file) return;
+  if(file.size>5*1024*1024){showToast('Foto muito grande (máx 5MB)','error');return;}
+  const reader=new FileReader();
+  reader.onload=e=>{
+    pubImgData=e.target.result;
+    const prev=document.getElementById('imgPreview');
+    prev.src=pubImgData;
+    prev.style.display='block';
+    prev.classList.add('active');
+    document.getElementById('imgUploadArea').classList.add('has-img');
+    document.getElementById('imgUploadArea').querySelector('i').style.display='none';
+    document.getElementById('imgUploadArea').querySelector('p').style.display='none';
+    document.getElementById('imgUploadArea').querySelector('span').style.display='none';
+    showToast('✅ Foto carregada!','success');
+  };
+  reader.readAsDataURL(file);
+}
+
+function publishProduct(){
+  const name=document.getElementById('pubName').value.trim();
+  const priceLow=parseFloat(document.getElementById('pubPriceLow').value);
+  const location=document.getElementById('pubLocation').value.trim();
+  if(!name){showToast('❌ Insere o nome do produto','error');return;}
+  if(!priceLow||isNaN(priceLow)){showToast('❌ Insere o preço baixo','error');return;}
+  if(!location){showToast('❌ Insere a localização','error');return;}
+
+  const prods=getProducts();
+  const priceHigh=parseFloat(document.getElementById('pubPriceHigh').value)||0;
+  const rating=parseFloat(document.getElementById('pubRating').value)||4.0;
+  const prod={
+    id:currentEditId||Date.now(),
+    name,cat:document.getElementById('pubCat').value,
+    type:document.getElementById('pubType').value,
+    price:priceLow,priceHigh:priceHigh||null,
+    location,description:document.getElementById('pubDesc').value.trim(),
+    emoji:document.getElementById('pubEmoji').value.trim()||'🏷️',
+    image:pubImgData||'',
+    hot:document.getElementById('pubHot').checked,
+    rating:rating,
+    reviews:currentEditId?(prods.find(x=>x.id===currentEditId)?.reviews||0):0,
+    published:true,date:Date.now()
+  };
+
+  if(currentEditId){
+    const idx=prods.findIndex(p=>p.id===currentEditId);
+    if(idx>-1) prods[idx]=prod;
+  } else {
+    prods.unshift(prod);
+  }
+  saveProducts(prods);
+  document.getElementById('adm-total-prod').textContent=prods.length;
+  showToast('🚀 Produto publicado com sucesso!','success');
+  currentEditId=null;
+  pubImgData='';
+  document.getElementById('admContent').innerHTML=publishFormHTML();
+  setupImgUpload();
+  renderHome();
+}
+
+function renderAdminProducts(){
+  const prods=getProducts();
+  if(prods.length===0) return`<div class="empty"><i class="fas fa-box-open"></i><h3>Sem produtos</h3><p>Publica o primeiro produto.</p></div>`;
+  return`<div style="margin-bottom:10px;display:flex;justify-content:space-between;align-items:center;"><span style="font-size:13px;color:var(--gray2)">${prods.length} produto(s) publicado(s)</span><button onclick="admTab('publish',null)" class="pub-btn" style="width:auto;padding:8px 16px;font-size:12px;"><i class="fas fa-plus"></i> Novo</button></div>`+
+  prods.map(p=>{
+    const disc=calcDisc(p);
+    const thumb=p.image?`<img class="adm-prod-thumb" src="${p.image}">`:`<div class="adm-prod-thumb-ph">${p.emoji||'🏷️'}</div>`;
+    return`<div class="adm-prod-card">
+      <div class="adm-prod-hdr">
+        ${thumb}
+        <div class="adm-prod-info">
+          <div class="adm-prod-name">${p.name}</div>
+          <div class="adm-prod-meta"><i class="fas fa-map-marker-alt" style="color:var(--p);font-size:10px;"></i> ${p.location}</div>
+          <div class="adm-prod-prices">
+            <div class="adm-prod-price-low">${p.price} MZN</div>
+            ${p.priceHigh?`<div class="adm-prod-price-high">${p.priceHigh} MZN</div>`:''}
+            ${disc>0?`<div class="adm-prod-disc">-${disc}%</div>`:''}
+          </div>
+        </div>
+      </div>
+      <div class="adm-prod-actions">
+        <button class="adm-act-btn adm-act-edit" onclick="editProduct(${p.id})"><i class="fas fa-edit"></i> Editar</button>
+        <button class="adm-act-btn adm-act-toggle" onclick="togglePublish(${p.id})">${p.published?'<i class="fas fa-eye-slash"></i> Ocultar':'<i class="fas fa-eye"></i> Publicar'}</button>
+        <button class="adm-act-btn adm-act-del" onclick="deleteProduct(${p.id})"><i class="fas fa-trash"></i></button>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function editProduct(id){
+  const p=getProducts().find(x=>x.id===id);
+  if(!p) return;
+  currentEditId=id;
+  pubImgData=p.image||'';
+  document.getElementById('admContent').innerHTML=publishFormHTML(p);
+  if(p.image){
+    setTimeout(()=>{
+      const prev=document.getElementById('imgPreview');
+      if(prev){prev.src=p.image;prev.style.display='block';prev.classList.add('active');}
+    },50);
+  }
+  document.getElementById('admContent').scrollIntoView({behavior:'smooth'});
+}
+
+function deleteProduct(id){
+  if(!confirm('Apagar este produto?')) return;
+  const prods=getProducts().filter(p=>p.id!==id);
+  saveProducts(prods);
+  admTab('products',null);
+  renderHome();
+  showToast('🗑️ Produto apagado','success');
+}
+
+function togglePublish(id){
+  const prods=getProducts();
+  const p=prods.find(x=>x.id===id);
+  if(p){p.published=!p.published;saveProducts(prods);}
+  admTab('products',null);
+  renderHome();
+}
+
+function renderAdminUsers(){
+  const u=getUser();
+  const users=u?[{name:u.nome,phone:u.tel,plan:u.premium?'premium':'free',joined:new Date(u.registeredAt).toLocaleDateString('pt-PT')}]:[];
+  const staticUsers=[
+    {name:'João Machava',phone:'+258 84 123 4567',plan:'premium',joined:'Mar 2025'},
+    {name:'Maria Tembe',phone:'+258 82 987 6543',plan:'free',joined:'Abr 2025'},
+    {name:'Carlos Nkosi',phone:'+258 86 555 0011',plan:'premium',joined:'Mai 2025'},
+    {name:'Ana Sitoe',phone:'+258 84 777 2233',plan:'free',joined:'Mai 2025'},
+    {name:'Pedro Nhaca',phone:'+258 82 444 5566',plan:'premium',joined:'Jan 2025'},
+  ];
+  const allUsers=[...users,...staticUsers];
+  return`<div style="margin-bottom:12px;font-size:13px;color:var(--gray2);">${allUsers.length} utilizadores registados</div>`+
+  allUsers.map(us=>`<div class="adm-user-row">
+    <div class="adm-user-avatar">${us.name[0]}</div>
+    <div class="adm-user-info">
+      <div class="adm-user-name">${us.name}</div>
+      <div class="adm-user-sub">${us.phone} • Desde ${us.joined}</div>
+    </div>
+    <div class="adm-user-badge ${us.plan}">${us.plan==='premium'?'👑 PRO':'Free'}</div>
+  </div>`).join('');
+}
+
+function renderAdminPayments(){
+  const reqs=getPayRequests();
+  if(reqs.length===0) return`<div class="empty"><i class="fas fa-file-invoice"></i><h3>Sem comprovativos pendentes</h3><p>Quando um utilizador enviar um comprovativo, aparecerá aqui.</p></div>`;
+  return`<div style="margin-bottom:12px;font-size:13px;color:var(--gray2);">${reqs.length} pedido(s) de pagamento</div>`+
+  reqs.map(r=>{
+    const statusColor=r.status==='aprovado'?'var(--p)':r.status==='rejeitado'?'var(--danger)':'var(--warn)';
+    const statusLabel=r.status==='aprovado'?'✅ Aprovado':r.status==='rejeitado'?'❌ Rejeitado':'⏳ Pendente';
+    return`<div class="adm-prod-card" style="margin-bottom:12px;">
+      <div class="adm-prod-hdr" style="flex-direction:column;align-items:flex-start;gap:8px;">
+        <div style="display:flex;align-items:center;gap:10px;width:100%;">
+          <div class="adm-user-avatar" style="width:44px;height:44px;font-size:16px;">${r.nome[0]}</div>
+          <div style="flex:1;">
+            <div style="font-size:14px;font-weight:700;color:var(--dark);">${r.nome}</div>
+            <div style="font-size:11px;color:var(--gray2);">${r.tel} · ${r.metodo}</div>
+            <div style="font-size:10px;color:var(--gray2);">${new Date(r.data).toLocaleString('pt-PT')}</div>
+          </div>
+          <div style="font-size:11px;font-weight:700;color:${statusColor};background:rgba(0,0,0,0.05);padding:4px 10px;border-radius:20px;">${statusLabel}</div>
+        </div>
+        ${r.imagem?`<div style="width:100%;"><img src="${r.imagem}" style="width:100%;max-height:200px;object-fit:contain;border-radius:10px;border:1px solid var(--grayM);"></div>`:''}
+        ${r.notas?`<div style="background:var(--grayL);border-radius:8px;padding:8px 10px;font-size:11px;color:var(--gray);width:100%;">📝 ${r.notas}</div>`:''}
+      </div>
+      ${r.status==='pendente'?`<div class="adm-prod-actions">
+        <button class="adm-act-btn" style="background:#E8F5E9;color:var(--p);flex:2;" onclick="approvePayment(${r.id})"><i class="fas fa-check-circle"></i> Aprovar e Activar Premium</button>
+        <button class="adm-act-btn adm-act-del" onclick="rejectPayment(${r.id})"><i class="fas fa-times"></i> Rejeitar</button>
+      </div>`:`<div style="padding:10px 14px;text-align:center;font-size:12px;color:${statusColor};font-weight:600;">${statusLabel}</div>`}
+    </div>`;
+  }).join('');
+}
+
+function approvePayment(id){
+  const reqs=getPayRequests();
+  const req=reqs.find(r=>r.id===id);
+  if(!req){showToast('Pedido não encontrado','error');return;}
+  req.status='aprovado';
+  savePayRequests(reqs);
+  const u=getUser();
+  if(u&&u.tel===req.tel){
+    u.premium=true;
+    saveUser(u);
+    updateStatusPill();
+    showToast('✅ Premium activado para '+req.nome+'!','success');
+  } else {
+    const approvals=JSON.parse(localStorage.getItem('precya_approvals')||'[]');
+    approvals.push({tel:req.tel,approved:true});
+    localStorage.setItem('precya_approvals',JSON.stringify(approvals));
+    showToast('✅ Aprovado! Acesso activado para '+req.nome,'success');
+  }
+  admTab('payments',null);
+}
+
+function rejectPayment(id){
+  if(!confirm('Tens a certeza que queres rejeitar este pagamento?')) return;
+  const reqs=getPayRequests();
+  const req=reqs.find(r=>r.id===id);
+  if(req){req.status='rejeitado';savePayRequests(reqs);}
+  admTab('payments',null);
+  showToast('❌ Pedido rejeitado','error');
+}
+
+function renderAdminMessages(){
+  const msgs=getChat();
+  const systemMsgs=[
+    {from:'Maria Tembe',text:'Olá, quero publicar os meus produtos na banca.',time:'10:23',unread:true},
+    {from:'Carlos Nkosi',text:'Quando chegam novas promoções de arroz?',time:'09:15',unread:true},
+    ...msgs.map(m=>({from:m.name||'Utilizador',text:m.text,time:formatTime(m.time),unread:false}))
+  ];
+  if(systemMsgs.length===0) return`<div class="empty"><i class="fas fa-inbox"></i><h3>Sem mensagens</h3></div>`;
+  return systemMsgs.map((m,i)=>`<div class="adm-msg-row ${m.unread?'unread':''}" onclick="openChatWith('${m.from}',${i})">
+    <div class="adm-msg-hdr">
+      <div class="adm-msg-from">${m.from}${m.unread?'<span class="adm-msg-unread-badge">Novo</span>':''}</div>
+      <div class="adm-msg-time">${m.time}</div>
+    </div>
+    <div class="adm-msg-txt">${m.text}</div>
+  </div>`).join('');
+}
+
+function openChatWith(name,idx){
+  document.getElementById('chatWithUserName').textContent=name;
+  document.getElementById('chatWithUserAv').textContent=name[0];
+  const msgs=document.getElementById('adminToUserMsgs');
+  const convos=[
+    [{role:'recv',text:'Olá, quero publicar os meus produtos na banca.'},{role:'recv',text:'Tenho frutas e legumes frescos todo os dias.'}],
+    [{role:'recv',text:'Quando chegam novas promoções de arroz?'},{role:'recv',text:'No Mercado Central disseram que vai baixar o preço esta semana.'}],
+  ];
+  const conv=convos[idx]||[{role:'recv',text:'Boa tarde!'}];
+  msgs.innerHTML=conv.map(m=>`<div class="chat-msg ${m.role}"><div class="chat-bubble">${m.text}</div><div class="chat-time ${m.role}">${formatTime(Date.now())}</div></div>`).join('');
+  document.getElementById('adminToUserChat').classList.add('open');
+  msgs.scrollTop=msgs.scrollHeight;
+}
+
+function closeAdminToUserChat(){document.getElementById('adminToUserChat').classList.remove('open');}
+
+function sendAdminReply(){
+  const inp=document.getElementById('adminToUserInp');
+  const txt=inp.value.trim();
+  if(!txt) return;
+  const msgs=document.getElementById('adminToUserMsgs');
+  msgs.innerHTML+=`<div class="chat-msg sent"><div class="chat-bubble">${txt}</div><div class="chat-time sent">${formatTime(Date.now())}</div></div>`;
+  inp.value='';
+  msgs.scrollTop=msgs.scrollHeight;
+}
+
+function renderAdminSettings(){
+  return`<div class="publish-form">
+    <h3><i class="fas fa-cog"></i> Configurações</h3>
+    <div class="form-grp"><label class="form-lbl">Nome do App</label><input class="form-inp" value="PRECYÁ PRO"></div>
+    <div style="background:var(--pl);border-radius:var(--rs);padding:14px;margin-bottom:14px;">
+      <div style="font-size:12px;font-weight:700;color:var(--p);margin-bottom:10px;"><i class="fas fa-mobile-alt"></i> Números de Pagamento</div>
+      <div class="form-grp" style="margin-bottom:8px;"><label class="form-lbl">M-Pesa (Titular: Helton Vasco)</label><input class="form-inp" value="844 260 391" style="background:white;"></div>
+      <div class="form-grp" style="margin-bottom:0;"><label class="form-lbl">M-Kesh (Titular: Osvaldo Tempo)</label><input class="form-inp" value="820 035 574" style="background:white;"></div>
+    </div>
+    <div class="form-grp"><label class="form-lbl">Preço VIP Mensal (MZN)</label><input class="form-inp" type="number" value="8"></div>
+    <div class="form-grp"><label class="form-lbl">Preço VIP Anual (MZN)</label><input class="form-inp" type="number" value="90"></div>
+    <div class="form-grp"><label class="form-lbl">Período de Teste Gratuito (horas)</label><input class="form-inp" type="number" value="24"></div>
+    <div class="form-grp"><label class="form-lbl">Cidade Principal</label><input class="form-inp" value="${currentCity}"></div>
+    <div class="form-grp"><label class="form-lbl">Alterar Password Admin</label><input class="form-inp" type="password" placeholder="Nova password…"></div>
+    <button class="pub-btn" onclick="showToast('✅ Configurações salvas!','success')"><i class="fas fa-save"></i> Guardar Configurações</button>
+  </div>`;
+}
+
+// ===========================
+//  USER ↔ ADMIN CHAT
+// ===========================
+function loadChatMessages(){
+  const msgs=getChat();
+  if(msgs.length>0){
+    document.getElementById('chatBadge').style.display='flex';
+    document.getElementById('chatBadge').textContent=msgs.length;
+  }
+}
+
+function toggleAdminChat(){
+  const chat=document.getElementById('adminChat');
+  if(chat.classList.contains('open')){
+    chat.classList.remove('open');
+  } else {
+    chat.classList.add('open');
+    document.getElementById('chatBadge').style.display='none';
+  }
+}
+
+function openAdminChatFromUser(){
+  closeAllModals();
+  document.getElementById('adminChat').classList.add('open');
+  document.getElementById('chatBadge').style.display='none';
+}
+
+function closeAdminChat(){document.getElementById('adminChat').classList.remove('open');}
+
+function sendAdminChatMsg(){
+  const inp=document.getElementById('adminChatInp');
+  const txt=inp.value.trim();
+  if(!txt) return;
+  const msgs=document.getElementById('adminChatMsgs');
+  msgs.innerHTML+=`<div class="chat-msg sent"><div class="chat-bubble">${txt}</div><div class="chat-time sent">${formatTime(Date.now())}</div></div>`;
+  inp.value='';
+  msgs.scrollTop=msgs.scrollHeight;
+  const stored=getChat();
+  stored.push({name:'Utilizador',text:txt,time:Date.now()});
+  saveChat(stored);
+  setTimeout(()=>{
+    const replies=['Obrigado pela sua mensagem! Responderei em breve. 🙏','Recebemos a sua mensagem. A equipa PRECYÁ responderá em até 1 hora.','Olá! Agradecemos o contacto. Como posso ajudar?'];
+    const r=replies[Math.floor(Math.random()*replies.length)];
+    msgs.innerHTML+=`<div class="chat-msg recv"><div class="chat-bubble">${r}</div><div class="chat-time">${formatTime(Date.now())}</div></div>`;
+    msgs.scrollTop=msgs.scrollHeight;
+  },1500);
+}
+
+function closeAllChats(){
+  document.getElementById('adminChat').classList.remove('open');
+  document.getElementById('aiChat').classList.remove('open');
+}
+
+// ===========================
+//  AI CHAT (Local Fallback)
+// ===========================
+function toggleAiChat(){
+  const chat=document.getElementById('aiChat');
+  chat.classList.toggle('open');
+}
+
+function sendAiMsg(){
+  const inp=document.getElementById('aiInp');
+  const msg=inp.value.trim();
+  if(!msg) return;
+  appendAiMsg(msg,'user');
+  inp.value='';
+  appendAiTyping();
+  const prods=getProducts();
+  setTimeout(()=>{
+    removeAiTyping();
+    const reply=generateAiReply(msg,prods,currentCity);
+    appendAiMsg(reply,'bot');
+    aiHistory.push({role:'user',content:msg},{role:'assistant',content:reply});
+    if(aiHistory.length>16) aiHistory=aiHistory.slice(-16);
+  },1200);
+}
+
+function generateAiReply(msg,prods,city){
+  const lower=msg.toLowerCase();
+  if(lower.includes('arroz')){
+    const arroz=prods.filter(p=>p.name.toLowerCase().includes('arroz')).sort((a,b)=>a.price-b.price);
+    if(arroz.length) return `🍚 Encontrei ${arroz.length} opção(ões) de arroz:<br><br>${arroz.map((a,i)=>`${i+1}. <strong>${a.name}</strong> — <span style="color:var(--p)">${a.price} MZN</span> em ${a.location}`).join('<br>')}<br><br>💡 <strong>Dica:</strong> O mais barato é o <strong>${arroz[0].name}</strong> por ${arroz[0].price} MZN!`;
+    return '🍚 De momento não há arroz registado. Volta mais tarde ou cria um alerta de preço!';
+  }
+  if(lower.includes('óleo')||lower.includes('oleo')){
+    const oleo=prods.filter(p=>p.name.toLowerCase().includes('óleo')||p.name.toLowerCase().includes('oleo')).sort((a,b)=>a.price-b.price);
+    if(oleo.length) return `🫙 Encontrei óleo:<br><br>${oleo.map((o,i)=>`${i+1}. <strong>${o.name}</strong> — <span style="color:var(--p)">${o.price} MZN</span> em ${o.location}`).join('<br>')}<br><br>💡 O mais barato é <strong>${oleo[0].name}</strong> por ${oleo[0].price} MZN!`;
+    return '🫙 Não há óleo registado de momento.';
+  }
+  if(lower.includes('poupar')||lower.includes('economizar')){
+    return '💰 <strong>Dicas para poupar em Moçambique:</strong><br><br>1. Compara preços no PRECYÁ antes de sair<br>2. Compra em mercados locais vs supermercados<br>3. Aproveita as "Ofertas do Dia" 🔥<br>4. Cria alertas de preço para produtos essenciais<br>5. Compra em quantidade (atacado) quando possível';
+  }
+  if(lower.includes('perto')||lower.includes('próximo')||lower.includes('proximo')||lower.includes('mapa')){
+    return `📍 <strong>Mercados perto de ti em ${city}:</strong><br><br>• Mercado Central (centro)<br>• Mercado Xipamanine<br>• Mini-Mercado Polana<br>• Shoprite ${city}<br><br>💡 Activa a localização GPS para resultados mais precisos!`;
+  }
+  if(lower.includes('premium')||lower.includes('vip')){
+    return '👑 <strong>Premium PRECYÁ PRO:</strong><br><br>✅ Preços ilimitados<br>✅ Alertas automáticos<br>✅ IA Assistente 24/7<br>✅ Sem anúncios<br><br>Por apenas <strong>8 MZN/mês</strong> ou <strong>90 MZN/ano</strong>!<br><br>💳 Pagamento via M-Pesa (844 260 391) ou M-Kesh (820 035 574)';
+  }
+  if(lower.includes('olá')||lower.includes('ola')||lower.includes('oi')||lower.includes('hey')){
+    return '👋 Olá! Sou o PRECYÁ IA. Pergunta-me sobre:<br><br>• Preços de produtos<br>• Onde comprar mais barato<br>• Dicas de poupança<br>• Mercados perto de ti<br><br>Como posso ajudar hoje? 🇲🇿';
+  }
+  return `🔍 Analisei os ${prods.length} produtos disponíveis em ${city}.<br><br>Pergunta-me algo específico como:<br>• "Onde está o arroz mais barato?"<br>• "Qual o óleo mais barato?"<br>• "Como poupar mais?"<br>• "Mercados perto de mim"<br><br>Estou aqui para ajudar! 💚`;
+}
+
+function sendAiQuick(msg){document.getElementById('aiInp').value=msg;sendAiMsg();}
+
+function appendAiMsg(txt,role){
+  const msgs=document.getElementById('aiMsgs');
+  msgs.innerHTML+=`<div class="ai-msg ${role}"><div class="ai-bubble">${txt}</div></div>`;
+  msgs.scrollTop=msgs.scrollHeight;
+}
+
+function appendAiTyping(){
+  const msgs=document.getElementById('aiMsgs');
+  msgs.innerHTML+=`<div class="ai-msg bot" id="aiTyping"><div class="ai-typing"><span></span><span></span><span></span></div></div>`;
+  msgs.scrollTop=msgs.scrollHeight;
+}
+
+function removeAiTyping(){document.getElementById('aiTyping')?.remove();}
+
+// ===========================
+//  MODALS
+// ===========================
+function openModal(id){
+  closeAllChats();
+  document.getElementById(id)?.classList.add('open');
+}
+function closeModal(id){document.getElementById(id)?.classList.remove('open');}
+function closeAllModals(){document.querySelectorAll('.modal-ov').forEach(m=>m.classList.remove('open'));}
+
+document.addEventListener('click',e=>{
+  if(e.target.classList.contains('modal-ov')) closeAllModals();
+  if(!e.target.closest('#dotsBtn')&&!e.target.closest('#dotsMenu')) document.getElementById('dotsMenu').style.display='none';
+});
+
+function openDotsMenu(){
+  const m=document.getElementById('dotsMenu');
+  m.style.display=m.style.display==='block'?'none':'block';
+}
+function closeDotsMenu(){document.getElementById('dotsMenu').style.display='none';}
+
+function selectPlan(el,plan){
+  document.querySelectorAll('.plan-card').forEach(c=>c.classList.remove('selected'));
+  el.classList.add('selected');
+  const amtEl=document.getElementById('payAmt');
+  if(amtEl) amtEl.textContent=plan==='monthly'?'8 MZN (Mensal)':'90 MZN (Anual)';
+}
+
+let currentPayMethod='mpesa';
+function selPayMethod(method,el){
+  currentPayMethod=method;
+  document.querySelectorAll('.pay-method').forEach(m=>{
+    m.classList.remove('selected');
+    m.querySelector('.pay-check').innerHTML='';
+  });
+  el.classList.add('selected');
+  el.querySelector('.pay-check').innerHTML='<i class="fas fa-check" style="font-size:11px;"></i>';
+  const numEl=document.getElementById('payNumber');
+  const ownerEl=document.getElementById('payOwner');
+  const lblEl=document.getElementById('payMethodLabel');
+  const metodoInp=document.getElementById('compMetodo');
+  if(method==='mpesa'){
+    if(numEl) numEl.textContent='844 260 391';
+    if(ownerEl) ownerEl.textContent='Titular: Helton Vasco';
+    if(lblEl) lblEl.textContent='Transfira para M-Pesa';
+    if(metodoInp) metodoInp.value='M-Pesa — 844 260 391 (Helton Vasco)';
+  } else {
+    if(numEl) numEl.textContent='820 035 574';
+    if(ownerEl) ownerEl.textContent='Titular: Osvaldo Tempo';
+    if(lblEl) lblEl.textContent='Transfira para M-Kesh';
+    if(metodoInp) metodoInp.value='M-Kesh — 820 035 574 (Osvaldo Tempo)';
+  }
+}
+
+function openComprovanteModal(){
+  const u=getUser();
+  if(u){
+    const cn=document.getElementById('compNome');
+    const ct=document.getElementById('compTel');
+    if(cn) cn.value=u.nome||'';
+    if(ct) ct.value=u.tel||'';
+  }
+  const metodoInp=document.getElementById('compMetodo');
+  if(metodoInp&&!metodoInp.value){
+    metodoInp.value='M-Pesa — 844 260 391 (Helton Vasco)';
+  }
+  closeModal('paymentModal');
+  openModal('comprovanteModal');
+}
+
+let compImgData='';
+function handleComprovanteUpload(input){
+  const file=input.files[0];
+  if(!file) return;
+  if(file.size>8*1024*1024){showToast('Foto muito grande (máx 8MB)','error');return;}
+  const reader=new FileReader();
+  reader.onload=e=>{
+    compImgData=e.target.result;
+    const prev=document.getElementById('compPreview');
+    if(prev){prev.src=compImgData;prev.style.display='block';}
+    showToast('✅ Comprovativo carregado!','success');
+  };
+  reader.readAsDataURL(file);
+}
+
+function enviarComprovante(){
+  const nome=document.getElementById('compNome').value.trim();
+  const tel=document.getElementById('compTel').value.trim();
+  const metodo=document.getElementById('compMetodo').value.trim();
+  if(!nome||!tel){showToast('❌ Dados incompletos','error');return;}
+  if(!compImgData){showToast('❌ Carrega a foto do comprovativo','error');return;}
+  const reqs=getPayRequests();
+  const req={
+    id:Date.now(),
+    nome,tel,metodo,
+    imagem:compImgData,
+    notas:document.getElementById('compNotes').value.trim(),
+    data:Date.now(),
+    status:'pendente'
+  };
+  reqs.unshift(req);
+  savePayRequests(reqs);
+  closeModal('comprovanteModal');
+  showToast('✅ Comprovativo enviado! Aguarda aprovação do admin.','success');
+  setTimeout(()=>showToast('📱 O admin irá verificar e activar o teu acesso em breve.','success'),2500);
+  compImgData='';
+}
+
+function confirmLogout(){
+  if(confirm('Tens a certeza que queres sair?')){
+    localStorage.removeItem(USER_KEY);
+    localStorage.removeItem('precya_onb_done');
+    document.getElementById('app').style.display='none';
+    showRegisterScreen();
+    showToastGlobal('Sessão terminada. Volta sempre!','success');
+  }
+}
+
+// ===========================
+//  TOAST
+// ===========================
+let toastTimer=null;
+function showToast(msg,type='success'){
+  const t=document.getElementById('toast');
+  const ico=t.querySelector('i');
+  document.getElementById('toastTxt').textContent=msg;
+  t.className='toast show '+(type==='error'?'error':'success');
+  ico.className='fas '+(type==='error'?'fa-exclamation-circle':'fa-check-circle');
+  clearTimeout(toastTimer);
+  toastTimer=setTimeout(()=>t.classList.remove('show'),3000);
+}
+
+// ===========================
+//  UTILS
+// ===========================
+function formatTime(ts){
+  const d=new Date(ts);
+  return d.getHours().toString().padStart(2,'0')+':'+d.getMinutes().toString().padStart(2,'0');
+}
+
+function togglePassVis(){
+  const inp=document.getElementById('adminPass');
+  const ico=document.getElementById('passVisIco');
+  if(inp.type==='password'){
+    inp.type='text';
+    ico.className='fas fa-eye-slash';
+  } else {
+    inp.type='password';
+    ico.className='fas fa-eye';
+  }
+}
+
+// ===========================
+//  INSTALL APP (PWA)
+// ===========================
+let deferredPrompt=null;
+
+window.addEventListener('beforeinstallprompt',e=>{
+  e.preventDefault();
+  deferredPrompt=e;
+  setTimeout(()=>{
+    if(!localStorage.getItem('precya_install_dismissed')){
+      document.getElementById('installBanner').classList.add('show');
+    }
+  },4000);
+});
+
+function installApp(){
+  document.getElementById('installBanner').classList.remove('show');
+  if(deferredPrompt){
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then(r=>{
+      if(r.outcome==='accepted') showToast('✅ PRECYÁ instalado com sucesso!','success');
+      deferredPrompt=null;
+    });
+  } else {
+    openModal('installModal');
+  }
+}
+
+function triggerNativeInstall(){
+  closeModal('installModal');
+  if(deferredPrompt){
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then(r=>{
+      if(r.outcome==='accepted') showToast('✅ PRECYÁ instalado!','success');
+      deferredPrompt=null;
+    });
+  } else {
+    showToast('💡 Usa o menu do browser para instalar','success');
+  }
+}
+
+function dismissInstall(){
+  document.getElementById('installBanner').classList.remove('show');
+  localStorage.setItem('precya_install_dismissed','1');
+}
+
+window.addEventListener('load',()=>{
+  setTimeout(()=>{
+    if(!localStorage.getItem('precya_install_dismissed')&&!deferredPrompt){
+      const isIOS=/iPad|iPhone|iPod/.test(navigator.userAgent)&&!window.MSStream;
+      const isAndroid=/Android/.test(navigator.userAgent);
+      const isStandalone=window.matchMedia('(display-mode: standalone)').matches||window.navigator.standalone;
+      if(!isStandalone&&(isIOS||isAndroid)){
+        document.getElementById('installBanner').classList.add('show');
+      }
+    }
+  },5000);
+});
+
+// Keyboard shortcuts
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'){closeAllModals();closeAllChats();document.getElementById('dotsMenu').style.display='none';}
+});
+
+// Service Worker simulation for offline
+if('serviceWorker' in navigator){
+  navigator.serviceWorker.register('data:text/javascript;base64,'+btoa(`self.addEventListener('install',e=>self.skipWaiting());self.addEventListener('fetch',e=>e.respondWith(fetch(e.request).catch(()=>caches.match(e.request))));`)).catch(()=>{});
+}
+</script>
+</body>
+</html>
